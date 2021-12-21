@@ -3,6 +3,7 @@ package oop;
 import java.util.Scanner;
 
 public class Person {
+	// các thuộc tính đều đã đc để là private
 	private String Ten;
 	private String GioiTinh;
 	private String DiaChi;
@@ -42,6 +43,7 @@ public class Person {
 		NgaySinh = ngaySinh;
 	}
 	
+	//  nhập thông tin Person
 	public void nhapThongTinPerson() {
 		Scanner sca = new Scanner(System.in);
 		System.out.println("Nhập tên");
@@ -54,6 +56,7 @@ public class Person {
 		NgaySinh = sca.nextLine();
 	}
 	
+	// hiển thị thông tin Person
 	public void hienthiThongTinPerson() {
 		System.out.printf("\nTen: %s, GioiTinh: %s, DiaChi: %s, NgaySinh: %s", Ten, GioiTinh, DiaChi, NgaySinh);
 	}

@@ -2,7 +2,9 @@ package oop;
 
 import java.util.Scanner;
 
+// lớp Student kế thừa lớp Person
 public class Student extends Person{
+	// các thuộc tính đều là private
 	private String MaSV;
 	private Float DiemTB;
 	private String Email;
@@ -34,14 +36,18 @@ public class Student extends Person{
 		Email = email;
 	}
 	
+	// ghi đè phương thức của lớp cha Person
 	@Override
 	public void nhapThongTinPerson() {
 		// TODO Auto-generated method stub
 		super.nhapThongTinPerson();
+		
+		// các phần thêm của lớp Student
 		Scanner sca = new Scanner(System.in);
 		System.out.println("Nhập Mã Sinh viên");
 		MaSV = sca.nextLine();
 		System.out.println("Nhập điểm trung bình");
+		// bắt ngoại lệ nhập điểm và giới hạn giá trị điểm từ 0.0 -> 10.0
 		do {
 			try {
 				DiemTB = Float.parseFloat(sca.nextLine());
@@ -56,6 +62,7 @@ public class Student extends Person{
 		System.out.println("---------------");
 	}
 	
+	// ghi đề phương thức hiên thị của lớp cha Person
 	@Override
 	public void hienthiThongTinPerson() {
 		// TODO Auto-generated method stub

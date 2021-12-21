@@ -3,9 +3,11 @@ package oop;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// tạo lớp b implements lớp a 
 public class b implements a {
 
 
+	// triển khai hàm sửa thông tin sinh viên
 	@Override
 	public void sua(ArrayList<Student> listStudent) {
 		// TODO Auto-generated method stub
@@ -33,6 +35,7 @@ public class b implements a {
 		
 	}
 
+	// triển khai hàm xóa thông tin sinh viên
 	@Override
 	public void xoa(ArrayList<Student> listStudent) {
 		// TODO Auto-generated method stub
@@ -42,7 +45,7 @@ public class b implements a {
 			System.out.println("Xóa thông tin cho sinh viên theo MaSV");
 			Scanner sca = new Scanner(System.in);
 			System.out.println("Nhập MaSV cần xóa");
-			String xoa = sca.nextLine();
+			String xoa = sca.nextLine();  // khởi tạo biến chứa masv cần xóa
 			
 			
 			for (int i = 0; i < listStudent.size(); i++) {
@@ -56,6 +59,7 @@ public class b implements a {
 		
 	}
 
+	// triển khai hàm xem thông tin sinh viên
 	@Override
 	public void xem(ArrayList<Student> listStudent) {
 		// TODO Auto-generated method stub
@@ -68,13 +72,15 @@ public class b implements a {
 		}
 	}
 
+	// triển khai hàm thêm thông tin sinh viên
 	@Override
 	public void them(ArrayList<Student> listStudent) {
 		// TODO Auto-generated method stub
 		System.out.println("Thêm  thông tin cho Student");
 		Scanner sca = new Scanner(System.in);
 		System.out.println("Nhập số lượng sinh viên cần thêm");
-		int soluong = 0;
+		int soluong = 0;  // khởi tạo biến số lượng sinh viên cần thêm
+		// bắt ngoại lệ cho biến nhập vào phải là số
 		do {
 			try {
 				soluong = Integer.parseInt(sca.nextLine());
