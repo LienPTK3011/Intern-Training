@@ -10,19 +10,29 @@ import java.util.Scanner;
  *
  * @author Dang
  */
-public class Student extends Person {
+public class Student extends Person implements Comparable<Student> {
     public String studentID;
-    private float averagepoint;
+    public int averagepoint;
     public String email;
     
      public Student(){
     }
     
-     public Student(String studentID, float averagepoint,String email) {
+     public Student(String studentID, int averagepoint,String email) {
         this.studentID = studentID;
         this.averagepoint = averagepoint;
         this.email = email;
      }
+
+    /**
+     *
+     * @param o
+     * @return
+     */
+    public int compare(Student o) {
+        return this.getaveragepoint().compare(o.getaveragepoint());
+    
+}
       public void setstudentID(String studentID) {
         this.adress = studentID;
     }
@@ -37,11 +47,11 @@ public class Student extends Person {
     {
         return email;
     }
-     public float getaveragepoint() {
+     public int getaveragepoint() {
         return averagepoint;
     }
  
-    public void setaveragepoint(float averagepoint) {
+    public void setaveragepoint(int averagepoint) {
         this.averagepoint = averagepoint;
     }
     
@@ -50,41 +60,30 @@ public class Student extends Person {
     public void enter()
     {
         Scanner sc1 = new Scanner(System.in);
-        System.out.println("Enter Name: ");
-        setName(sc1.nextLine());
-        
-        System.out.println("Enter Sex: ");
-        setsex(sc1.nextLine());
-        
-        System.out.println("Enter Age: ");
-        setage(sc1.nextInt());
-        
-        String nextLine = sc1.nextLine();
-        System.out.println("Enter Adress: ");
-        setAdress(sc1.nextLine());
-        
-         
         System.out.println("Enter Student ID: ");
         setstudentID(sc1.nextLine());
         
          
         System.out.println("Enter Average Point: ");
-        setaveragepoint(sc1.nextFloat());
+        setaveragepoint(sc1.nextInt());
         
         String nextLine1 = sc1.nextLine();
         System.out.println("Enter Email: ");
         setemail(sc1.nextLine());
         
     }
+    
      
     @Override 
     public void display()
     {
-        System.out.printf("%20s %10s %20s %20s %10s %20s  \n",name, sex, age, adress, studentID, averagepoint, email);
+        System.out.printf("%25s %25s %25s\n",studentID, averagepoint, email);
     }
-//   public void check(String Student ID)
-//   {
-//       this.studentID = studentID;
-//       
-//   }
+
+    @Override
+    public int compareTo(Student o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 }

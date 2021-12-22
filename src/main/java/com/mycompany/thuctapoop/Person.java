@@ -45,11 +45,11 @@ public class Person {
     
      
     
-    public int getage() {
+    public int getAge() {
         return age;
     }
  
-    public void setage(int age) {
+    public void setAge(int age) {
         this.age = age;
     }
      public void setAdress(String newAdress) {
@@ -69,7 +69,7 @@ public class Person {
         setsex(sc.nextLine());
         
         System.out.println("Enter Age: ");
-        setage(sc.nextInt());
+        setAge(sc.nextInt());
         
         String nextLine1 = sc.nextLine();
         System.out.println("Enter Adress: ");
