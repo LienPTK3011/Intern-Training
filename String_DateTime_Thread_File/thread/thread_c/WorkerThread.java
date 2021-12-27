@@ -3,8 +3,7 @@ package thread_c;
 import java.util.Scanner;
 
 public class WorkerThread implements Runnable{
-	Scanner sca = new Scanner(System.in);
-	String s = sca.nextLine();
+	
 	private String task;
 	 
     public WorkerThread(String s) {
@@ -21,7 +20,5 @@ public class WorkerThread implements Runnable{
         }
         
     }
-    public void stop() {
-		stop();
-	}
+    
 }

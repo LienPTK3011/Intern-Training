@@ -43,6 +43,8 @@ public class BaiTap2 {
 	    }
 	   
 	    System.out.println("Số ngày hiện tại=" + cal.get(Calendar.DAY_OF_YEAR));
+	    int a = cal.get(Calendar.DAY_OF_YEAR);
+	    
 	}
 	
 	// tính số ngày giữa 2 mốc tgian
@@ -66,8 +68,8 @@ public class BaiTap2 {
 
 		  long getDiff = date2.getTime() - date1.getTime();
 		  long getDaysDiff = TimeUnit.MILLISECONDS.toDays(getDiff);
-		  System.out.println("Số ngày từ " + startDate);
-		  System.out.println("       đến " + endDate );
+		  System.out.println("Số ngày từ: " + startDate);
+		  System.out.println("       đến: " + endDate );
 		  System.out.println(" => là " + getDaysDiff + " ngày");
 		}catch (Exception e) {
 		  e.printStackTrace();
@@ -81,15 +83,15 @@ public class BaiTap2 {
 		// đổi từ String sang  Date
 		DateFormat datefomat1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	    String String = "22/12/2021 15:11:00";
-	    System.out.println("String ban đầu = " + String);
+	    System.out.println("String ban đầu: " + String);
 
 	    Date date = datefomat1.parse(String);
-	    System.out.println("đổi từ String ban đầu  "+ String + " sang " + date);
+	    System.out.println("đổi từ String ban đầu:  "+ String + " sang: " + date);
 
 	    // đổi từ Date sang String.
 	    DateFormat datefomat2 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 	    String dateString2 = datefomat2.format(date);
-	    System.out.println("đổi từ date " +date +  " sang " +dateString2);
+	    System.out.println("đổi từ date: " +date +  " sang: " +dateString2);
 
 		
 	}

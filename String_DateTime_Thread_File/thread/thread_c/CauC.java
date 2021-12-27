@@ -11,15 +11,16 @@ public class CauC {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sca = new Scanner(System.in);
-		String s = sca.nextLine();
-		
+		String s = "";
+		int i = 0;
 		ExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-		for (int i = 1; i <= 100; i++) {
-            Runnable worker = new WorkerThread("" + i);
+
+		while (!(s.equals("stop"))) {
+			i++;
+			Runnable worker = new WorkerThread(""+i);
             executor.execute(worker);
-            
-            
-        }
+            s =sca.nextLine();
+		}
 		executor.shutdown();
 	}
 }
