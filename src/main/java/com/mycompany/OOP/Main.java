@@ -20,51 +20,43 @@ public class Main {
      *
      * @param args
      */
-    public static void main(String[] args)
-    {//Ex1+Ex2a,b
-        Person person1 = new Person();
-   
-        person1.enter();
-        Student student1= new Student();
-        Scanner sc1 = new Scanner(System.in);
-        
-        student1.enter();
-        System.out.printf("%25s %25s %25s %25s  \n","Name","Sex","Age","Adress");
-        person1.display();
-        System.out.printf("%25s %25s %25s \n","StudentID", "Averagepoint", "Email");
-        student1.display();
-        
-        
-        
-          Person person2 = new Person();
-   
-        person2.enter();
-        Student student2= new Student();
-        Scanner sc2 = new Scanner(System.in);
-        
-        student2.enter();
-        System.out.printf("%25s %25s %25s %25s  \n","Name","Sex","Age","Adress");
-        person2.display();
-        System.out.printf("%25s %25s %25s \n","StudentID", "Averagepoint", "Email");
-        student2.display();
-              
-    
-      List<Student> students = new ArrayList<>();
-      student1.getaveragepoint();
-      student2.getaveragepoint();
-        Collections.sort(students, new Comparator<Student>() {
-            @Override
-            public int compare(Student o1, Student o2) {
-                return o1.getAge() - o2.getAge();
-            }
-        });
-
-        students.forEach(e -> System.out.println(e));
-
-        
+    public static void main(String[] args) {//Ex1+Ex2a,b
        
+        Person person1 = new Person();
+        enter(person1);
+        person1.display();
+
+        Student student1 = new Student();
+    
+        enter(student1);
+        student1.display(); 
+
     }
 
-    
-    
+    static void enter(Person person1) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter name: ");
+        person1.setName(sc.nextLine());
+        System.out.println("Enter sex: ");
+        person1.setsex(sc.nextLine());
+        System.out.println("Enter address: ");
+        person1.setAdress(sc.nextLine());
+        System.out.println("Enter Age: ");
+        person1.setAge(sc.nextInt());
+        sc.nextLine();
+    }
+    static void enter(Student student1) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter id: ");
+        student1.setid(sc.nextInt());
+        sc.nextLine();
+        System.out.println("Enter StudentID: ");
+        student1.setstudentID(sc.nextLine());
+        System.out.println("Enter Averagepoint: ");
+        student1.setaveragepoint(sc.nextInt());
+        sc.nextLine();
+        System.out.println("Enter Email: ");
+        student1.setemail(sc.nextLine());
+        
+    }
 }

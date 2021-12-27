@@ -10,14 +10,12 @@ import java.util.Comparator;
  *
  * @author Dang
  */
-public class SortStudentAverageUp implements Comparator<Student> {
-   
+public class SortAverageUp implements Comparator<Student> {
     @Override
     public int compare(Student student1, Student student2) {
         if (student1.getaveragepoint()> student2.getaveragepoint()) {
-            System.out.printf("Averagepoint:",student2.averagepoint,student1.averagepoint);
+            return 1;
         }
-        return 0;
-    
+        return -1;
     }
 }
