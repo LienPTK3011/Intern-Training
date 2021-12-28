@@ -14,8 +14,8 @@ public class BookingProgram {
 	static ArrayList<User> listUser = new ArrayList<User>();
 	static ArrayList<ConferenceRoom> listRoom = new ArrayList<ConferenceRoom>();
 	static ArrayList<Seat> listSeat = new ArrayList<Seat>();
-	public static void menu() {
-		System.out.println("--- Main menu ---");
+	public static void menuForManager() {
+		System.out.println("--- Menu for Manager ---");
 		System.out.println("1.User");
 		System.out.println("2.Room");
 		System.out.println("3.Seat");
@@ -48,7 +48,7 @@ public class BookingProgram {
 					readUserFile();
 					break;
 				case 5:
-					menu();
+					menuForManager();
 					break;
 				}
 			}
@@ -77,7 +77,7 @@ public class BookingProgram {
 					readRoomFile();
 					break;
 				case 5:
-					menu();
+					menuForManager();
 					break;
 				}
 			}
@@ -106,7 +106,7 @@ public class BookingProgram {
 					readSeatFile();
 					break;
 				case 5:
-					menu();
+					menuForManager();
 					break;
 				}
 			}
@@ -204,10 +204,104 @@ public class BookingProgram {
 		User user = new User(username, password);
 		listUser.add(user);
 	}
+	
+	public static void menuForUser() {
+		System.out.println("--- Menu for user ---");
+		System.out.println("1.Booking room");
+		System.out.println("2.Booking seat");
+		System.out.println("3.End program");
+		System.out.println("What do you want?");
+		
+		int n = new Scanner(System.in).nextInt();
+		switch(n) {
+		case 1:
+			bookingRoom();
+			break;
+		case 2: 
+			bookingSeat();
+			break;
+		case 3:
+			System.err.println("Good bye!");
+			System.exit(0);
+			break;
+		}
+	}
+	
+	private static void bookingSeat() {
+		listSeat = ioSeat.readFile("G:\\databk\\seat.txt");
+		System.out.print("Input seat code: ");
+		String seatCode = new Scanner(System.in).nextLine();
+		System.out.println("Input date: ");
+		
+		int temp = 0;
+		for(int i=0; i<listSeat.size(); i++) {
+			if(listSeat.get(i).getSeatCode().equals(seatCode)) {
+				temp = 1;
+				System.out.println("Done booking with seat code "+seatCode);
+				break;
+			}
+		}
+		if(temp==0) {
+			System.err.println("Seat code does not exist!");
+		}
+	}
+
+	private static void bookingRoom() {
+		listRoom = ioRoom.readFile("G:\\databk\\room.txt");
+		System.out.print("Input room code: ");
+		String roomCode = new Scanner(System.in).nextLine();
+		int temp = 0;
+		for(int i=0; i<listRoom.size(); i++) {
+			if(listRoom.get(i).getRoomCode().equals(roomCode)) {
+				temp = 1;
+				System.out.println("Done booking with room code "+roomCode);
+				break;
+			}
+		}
+		if(temp==0) {
+			System.err.println("Room code does not exist!");
+		}
+	}
+
+	public static int login() {
+		ArrayList<User> listManager = new ArrayList<User>();
+		listManager = ioUser.readFile("G:\\databk\\manager.txt");
+		ArrayList<User> listUser = new ArrayList<User>();
+		listUser = ioUser.readFile("G:\\databk\\user.txt");
+		System.out.println("---- Login ----");
+		System.out.print("Username: ");
+		String username = new Scanner(System.in).nextLine();
+		System.out.print("Password: ");
+		String password = new Scanner(System.in).nextLine();
+		for(User manager : listManager) {
+			if(manager.getUsername().equals(username)&&manager.getPassword().equals(password)) {
+				return 1;
+			}
+		}
+		for(User user : listUser) {
+			if(user.getUsername().equals(username)&&user.getPassword().equals(password)) {
+				return 2;
+			}
+		}
+		return 3;
+	}
 
 	public static void main(String[] args) {
+		System.out.println("***Booking Program***");
+		int role = login();
 		while(true) {
-			menu();
+			switch(role) {
+			case 1: 
+				menuForManager();
+				break;
+			case 2:
+				menuForUser(); 
+				break;
+			case 3:
+				System.err.println("Login failed, username or password is wrong!");
+				role = login();
+				break;
+			}
 		}
 	}
 }
