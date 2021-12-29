@@ -1,0 +1,4 @@
+1;seatA1;7.0;rowA
+2;seatB2;8.0;rowB
+3;seatC3;9.0;rowC
+4;seatD4;10.0;rowD

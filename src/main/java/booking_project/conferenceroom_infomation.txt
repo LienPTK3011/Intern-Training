@@ -1,0 +1,4 @@
+1;room1;20.0;rankC
+2;room2;30.0;rankB
+3;room3;50.0;rankA
+4;room4;100.0;rankS
