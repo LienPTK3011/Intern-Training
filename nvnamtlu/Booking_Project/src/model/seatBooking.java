@@ -1,25 +1,35 @@
 package model;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class seatBooking extends Booking{
-	private int seatID;
+public class SeatBooking extends Booking{
+	private String seatCode;
+	
+	public SeatBooking() {
+		super();
+	}
 
-	public seatBooking(int id, LocalDate day, LocalTime startTime, LocalTime endTime, double price, int seatID) {
+	public SeatBooking(int id, LocalDate day, LocalTime startTime, LocalTime endTime, double price, String seatCode) {
 		super(id, day, startTime, endTime, price);
-		this.seatID = seatID;
+		this.seatCode = seatCode;
+	}
+	
+	public String getSeatCode() {
+		return seatCode;
 	}
 
-	public int getSeatID() {
-		return seatID;
+	public void setSeatCode(String seatCode) {
+		this.seatCode = seatCode;
 	}
 
-	public void setSeatID(int seatID) {
-		this.seatID = seatID;
+	@Override
+	public double calculatePrice() {
+		Duration duration = Duration.between(startTime, endTime);
+		long hours = duration.toHours();
+		long minutes = duration.toMinutes()-hours*60;
+		double payMoney = (hours+(minutes*1.0/60))*this.getPrice();
+		return (double) Math.round(payMoney*100)/100;
 	}
-	
-	
-	
-	
 }

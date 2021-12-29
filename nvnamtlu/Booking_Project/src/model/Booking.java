@@ -4,15 +4,19 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Booking {
-	protected int id;
+	protected static int id;
 	protected LocalDate day;
 	protected LocalTime startTime;
 	protected LocalTime endTime;
 	protected double price;
 	
+	public Booking() {
+		super();
+	}
+
 	public Booking(int id, LocalDate day, LocalTime startTime, LocalTime endTime, double price) {
 		super();
-		this.id = id;
+		this.id = this.id + 1;
 		this.day = day;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -59,8 +63,8 @@ public class Booking {
 		this.price = price;
 	}
 
-	protected void calculatePrice() {
-		System.out.println("Calculate price for booking");
+	protected double calculatePrice() {
+		return 0;
 	}
 	
 	

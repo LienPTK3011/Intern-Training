@@ -9,6 +9,10 @@ import io.ioUser;
 import model.ConferenceRoom;
 import model.Seat;
 import model.User;
+import util.DateConverter;
+import util.TimeConverter;
+import model.ConferenceBooking;
+import model.SeatBooking;
 
 public class BookingProgram {
 	static ArrayList<User> listUser = new ArrayList<User>();
@@ -227,17 +231,32 @@ public class BookingProgram {
 		}
 	}
 	
+
 	private static void bookingSeat() {
 		listSeat = ioSeat.readFile("G:\\databk\\seat.txt");
 		System.out.print("Input seat code: ");
 		String seatCode = new Scanner(System.in).nextLine();
-		System.out.println("Input date: ");
+		System.out.print("Input Date(dd/MM/yyyy): ");
+		String strDay = new Scanner(System.in).nextLine();
+		System.out.print("Input start time(HH:mm): ");
+		String strST = new Scanner(System.in).nextLine();
+		System.out.print("Input end time(HH:mm): ");
+		String strET = new Scanner(System.in).nextLine();
+		double pricePerHour = 1.5; 
+		
+		SeatBooking seatBooking = new SeatBooking(0, DateConverter.stringToDate(strDay), TimeConverter.stringToTime(strST), TimeConverter.stringToTime(strET), pricePerHour, seatCode);
 		
 		int temp = 0;
 		for(int i=0; i<listSeat.size(); i++) {
 			if(listSeat.get(i).getSeatCode().equals(seatCode)) {
 				temp = 1;
-				System.out.println("Done booking with seat code "+seatCode);
+				System.out.println("--> Done booking seat with:");
+				System.out.println("Seat code: "+seatBooking.getSeatCode());
+				System.out.println("Date: "+seatBooking.getDay());
+				System.out.println("Time: "+seatBooking.getStartTime()+" to "+seatBooking.getEndTime());
+				seatBooking.setPrice(listSeat.get(i).getPricePerHour());
+				System.out.println("Price per hour: "+seatBooking.getPrice());
+				System.out.println("Your must to pay "+seatBooking.calculatePrice()+"$");
 				break;
 			}
 		}
@@ -250,11 +269,27 @@ public class BookingProgram {
 		listRoom = ioRoom.readFile("G:\\databk\\room.txt");
 		System.out.print("Input room code: ");
 		String roomCode = new Scanner(System.in).nextLine();
+		System.out.print("Input Date(dd/MM/yyyy): ");
+		String strDay = new Scanner(System.in).nextLine();
+		System.out.print("Input start time(HH:mm): ");
+		String strST = new Scanner(System.in).nextLine();
+		System.out.print("Input end time(HH:mm): ");
+		String strET = new Scanner(System.in).nextLine();
+		double pricePerHour = 1.5; 
+		
+		ConferenceBooking roomBooking = new ConferenceBooking(0, DateConverter.stringToDate(strDay), TimeConverter.stringToTime(strST), TimeConverter.stringToTime(strET), pricePerHour, roomCode);
+		
 		int temp = 0;
 		for(int i=0; i<listRoom.size(); i++) {
 			if(listRoom.get(i).getRoomCode().equals(roomCode)) {
 				temp = 1;
-				System.out.println("Done booking with room code "+roomCode);
+				System.out.println("--> Done booking conference room with:");
+				System.out.println("Room code: "+roomBooking.getRoomCode());
+				System.out.println("Date: "+roomBooking.getDay());
+				System.out.println("Time: "+roomBooking.getStartTime()+" to "+roomBooking.getEndTime());
+				roomBooking.setPrice(listRoom.get(i).getPricePerHour());
+				System.out.println("Price per hour: "+roomBooking.getPrice());
+				System.out.println("Your must to pay "+roomBooking.calculatePrice()+"$");
 				break;
 			}
 		}
