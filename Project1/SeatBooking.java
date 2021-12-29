@@ -2,32 +2,36 @@ package Project1;
 
 import java.util.Scanner;
 
-public class SeatBooking extends Seat {
+public class SeatBooking  {
 
-	private int IDseatBooking;
+	private String IDseatBooking;
 	private String Day;
 	private String StartTime;
 	private String EndTime;
+	private String SeatID;
 	private float Price;
-	
+
 	public SeatBooking() {
 		super();
 	}
 
-	public SeatBooking(int iDseatBooking, String day, String startTime, String endTime, float price) {
+	public SeatBooking(String iDseatBooking, String day, String startTime, String endTime, String seatID, float price) {
 		super();
 		IDseatBooking = iDseatBooking;
 		Day = day;
 		StartTime = startTime;
 		EndTime = endTime;
+		SeatID = seatID;
 		Price = price;
 	}
+	
+	
 
-	public int getIDseatBooking() {
+	public String getIDseatBooking() {
 		return IDseatBooking;
 	}
 
-	public void setIDseatBooking(int iDseatBooking) {
+	public void setIDseatBooking(String iDseatBooking) {
 		IDseatBooking = iDseatBooking;
 	}
 
@@ -55,6 +59,14 @@ public class SeatBooking extends Seat {
 		EndTime = endTime;
 	}
 
+	public String getSeatID() {
+		return SeatID;
+	}
+
+	public void setSeatID(String seatID) {
+		SeatID = seatID;
+	}
+
 	public float getPrice() {
 		return Price;
 	}
@@ -62,45 +74,41 @@ public class SeatBooking extends Seat {
 	public void setPrice(float price) {
 		Price = price;
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
 		return "SeatBooking [IDseatBooking=" + IDseatBooking + ", Day=" + Day + ", StartTime=" + StartTime
-				+ ", EndTime=" + EndTime + ", Price=" + CalculatePrice() + "]";
+				+ ", EndTime=" + EndTime + ", SeatID=" + SeatID + ", Price=" + CalculatePrice() + "]";
 	}
 
-	@Override
-	public void outputSeat() {
-		// TODO Auto-generated method stub
-		super.outputSeat();
+	public void outputSeatBooking() {
 		System.out.println(toString());
 	}
-	
-	@Override
-	public void inputSeat() {
-		// TODO Auto-generated method stub
-		super.inputSeat();
+
+	public void inputSeatBooking() {
 		Scanner sca = new Scanner(System.in);
 		System.out.println("Enter ID Seat Booking");
-		IDseatBooking = Integer.parseInt(sca.nextLine());
+		IDseatBooking = sca.nextLine();
 		System.out.println("Enter Day");
 		Day = sca.nextLine();
 		System.out.println("Enter Start Time");
 		StartTime = sca.nextLine();
 		System.out.println("Enter End Time");
 		EndTime = sca.nextLine();
+		System.out.println("Enter Seat ID");
+		SeatID = sca.nextLine();
 		
 	}
 	
 	public float CalculatePrice() {
-		return Price =  getPricePerHour();  // Price = (End time - Start time) * getPricePerHour()
+		return Price;  // Price = (End time - Start time) * getPricePerHour()
 		
 	}
 	
 	//  đọc theo dấu ,
 	public String getFileLine() {
-		return IDseatBooking + "," + Day + "," + StartTime + "," + EndTime + "," + CalculatePrice()  + "\n";
+		return IDseatBooking + "," + Day + "," + StartTime + "," + EndTime + "," + SeatID + "," + CalculatePrice()  + "\n";
 		
 	}
 	
@@ -109,11 +117,12 @@ public class SeatBooking extends Seat {
 		
 		try { //Float.parseFloat(p[1]);
 			String[] p = line.split(",");
-			IDseatBooking = Integer.parseInt(p[0]);
+			IDseatBooking = p[0];
 			Day = p[1];
 			StartTime = p[2];
 			EndTime = p[3];
-			Price = Float.parseFloat(p[4]);
+			SeatID = p[4];
+			Price = Float.parseFloat(p[5]);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

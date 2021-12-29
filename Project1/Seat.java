@@ -3,17 +3,17 @@ package Project1;
 import java.util.Scanner;
 
 public class Seat {
-	private int IDseat;
+	private String IDseat;
 	private String SeatCode;
 	private float PricePerHour;
 	private String Note;
-	
+
 
 	public Seat() {
 		super();
 	}
 
-	public Seat(int iDseat, String seatCode, float pricePerHour, String note) {
+	public Seat(String iDseat, String seatCode, float pricePerHour, String note) {
 		super();
 		IDseat = iDseat;
 		SeatCode = seatCode;
@@ -23,11 +23,11 @@ public class Seat {
 	
 	
 
-	public int getIDseat() {
+	public String getIDseat() {
 		return IDseat;
 	}
 
-	public void setIDseat(int iDseat) {
+	public void setIDseat(String iDseat) {
 		IDseat = iDseat;
 	}
 
@@ -55,11 +55,13 @@ public class Seat {
 		Note = note;
 	}
 
+	
+	
 	@Override
 	public String toString() {
-		return "Seat [ID=" + IDseat + ", SeatCode=" + SeatCode + ", PricePerHour=" + PricePerHour + ", Note=" + Note + "]";
+		return "Seat [IDseat=" + IDseat + ", SeatCode=" + SeatCode + ", PricePerHour=" + PricePerHour + ", Note=" + Note + "]";
 	}
-	
+
 	public void outputSeat() {
 		System.out.println(toString());
 	}
@@ -67,7 +69,7 @@ public class Seat {
 	public void inputSeat() {
 		Scanner sca = new Scanner(System.in);
 		System.out.println("Enter ID seat");
-		IDseat = Integer.parseInt(sca.nextLine());
+		IDseat = sca.nextLine();
 		System.out.println("Enter Seat code");
 		SeatCode = sca.nextLine();
 		System.out.println("Enter price per hour");

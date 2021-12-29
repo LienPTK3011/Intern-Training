@@ -27,13 +27,11 @@ public class Management {
 				}
 				SeatBooking seat = new SeatBooking();
 				seat.parse(line);  // parse()
-				listSeatBooking.add(seat);
-				
-				buf.close();
-				read.close();
-				fis.close();
-				
+				listSeatBooking.add(seat);	
 			}
+			buf.close();
+			read.close();
+			fis.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -55,12 +53,11 @@ public class Management {
 				ConferenceBooking con = new ConferenceBooking();
 				con.parse(line);  // parse()
 				listConferenceBooking.add(con);
-				
-				buf.close();
-				read.close();
-				fis.close();
-				
 			}
+			buf.close();
+			read.close();
+			fis.close();
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -75,8 +72,8 @@ public class Management {
 				String line = s.getFileLine(); /// getFileLine()
 				byte[] b = line.getBytes("utf8");
 				fos.write(b);
-				fos.close();
 			}
+			fos.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -91,8 +88,9 @@ public class Management {
 				String line = s.getFileLine(); /// getFileLine()
 				byte[] b = line.getBytes("utf8");
 				fos.write(b);
-				fos.close();
+				
 			}
+			fos.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -103,7 +101,7 @@ public class Management {
 		System.out.println("insert SeatBooking");
 		Scanner sca = new Scanner(System.in);
 		SeatBooking s = new SeatBooking();
-		s.inputSeat();
+		s.inputSeatBooking();
 		listSeatBooking.add(s);
 	}
 	
@@ -112,34 +110,25 @@ public class Management {
 		System.out.println("insert ConferenceBooking");
 		Scanner sca = new Scanner(System.in);
 		ConferenceBooking s = new ConferenceBooking();
-		s.inputConferenceRoom();
+		s.inputConferenceBooking();
 		listConferenceBooking.add(s);
 	}
 	
 	// hiển thị chỗ ngồi
 	public void viewSeatBooking(ArrayList<SeatBooking> listSeatBooking) {
 		for (SeatBooking s : listSeatBooking) {
-			s.outputSeat();
+			s.outputSeatBooking();
 		}
 	}
 		
 	// hiển thị phòng
 	public void viewConferenceBooking(ArrayList<ConferenceBooking> listConferenceBooking) {
 		for (ConferenceBooking s : listConferenceBooking) {
-			s.outputConferenceRoom();
+			s.outputConferenceBooking();
 		}
 	}	
 	
 	public void CalculateAll(ArrayList<SeatBooking> listSeatBooking, ArrayList<ConferenceBooking> listConferenceBooking) {
-		float sum1 = 0;
-		float sum2 = 0;
 		
-		for (SeatBooking s : listSeatBooking) {
-			sum1 += s.CalculatePrice();
-		}
-		for (ConferenceBooking c : listConferenceBooking) {
-			sum2 += c.CalculatePrice();
-		}
-		float sumAll = sum1+sum2;
 	}
 }

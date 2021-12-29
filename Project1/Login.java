@@ -14,27 +14,33 @@ public class Login {
 	
 	
 	// kiểm tra tài khoản mật khẩu
-	public void checkLogin(ArrayList<User> listUser) {
+	public boolean checkLogin(ArrayList<User> listUser) {
+		
 		Scanner sca = new Scanner(System.in);
 		System.out.println("Enter Username");
 		String check1 = sca.nextLine();
 		System.out.println("Enter Password");
 		String check2 = sca.nextLine();
 		
+		boolean bl = false;
 		for (User user : listUser) {
 			if(user.getUsername().equals(check1) && user.getPassword().equals(check2)){
-				System.out.println("Logged in successfully");
-			}else {
-				System.out.println("Logged in failure. Please try again!");
+				bl = true;			
 			}
 		}
+		if(bl == true) {
+			System.out.println("Logged in successfully");
+		}else {
+			System.out.println("Logged in failure. Please try again!");
+		}
+		return bl;
+		
 	}
 	
 	// đọc file user
 	public void readFileUser(ArrayList<User> listUser) {
-		System.out.println("read file user.txt");
 		try {
-			FileInputStream fis = new FileInputStream("user.txt");
+			FileInputStream fis = new FileInputStream("D:\\eclipse-workspace\\THUCTAPBUOI1\\src\\Project1\\user.txt");
 			InputStreamReader read = new InputStreamReader(fis, StandardCharsets.UTF_8);
 			BufferedReader buf = new BufferedReader(read);
 			
@@ -45,13 +51,11 @@ public class Login {
 				}
 				User user = new User();
 				user.parse(line);  // parse()
-				listUser.add(user);
-				
-				buf.close();
-				read.close();
-				fis.close();
-				
+				listUser.add(user);	
 			}
+			buf.close();
+			read.close();
+			fis.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -61,13 +65,14 @@ public class Login {
 	public void saveFileUser(ArrayList<User> listUser) {
 		System.out.println("save file user.txt");
 		try {
-			FileOutputStream fos = new FileOutputStream("user.txt");
+			FileOutputStream fos = new FileOutputStream("D:\\eclipse-workspace\\THUCTAPBUOI1\\src\\Project1\\user.txt");
 			for (User user : listUser) {
 				String line = user.getFileLine(); /// getFileLine()
 				byte[] b = line.getBytes("utf8");
 				fos.write(b);
-				fos.close();
+				
 			}
+			fos.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

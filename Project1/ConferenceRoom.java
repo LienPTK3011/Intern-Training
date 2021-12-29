@@ -3,17 +3,17 @@ package Project1;
 import java.util.Scanner;
 
 public class ConferenceRoom {
-	private int IDroom;
+	private String IDroom;
 	private String RoomCode;
 	private float PricePerHour;
 	private String Note;
-	
-	
+
+
 	public ConferenceRoom() {
 		super();
 	}
 
-	public ConferenceRoom(int iDroom, String roomCode, float pricePerHour, String note) {
+	public ConferenceRoom(String iDroom, String roomCode, float pricePerHour, String note) {
 		super();
 		IDroom = iDroom;
 		RoomCode = roomCode;
@@ -21,12 +21,13 @@ public class ConferenceRoom {
 		Note = note;
 	}
 	
+	
 
-	public int getIDroom() {
+	public String getIDroom() {
 		return IDroom;
 	}
 
-	public void setIDroom(int iDroom) {
+	public void setIDroom(String iDroom) {
 		IDroom = iDroom;
 	}
 
@@ -53,8 +54,6 @@ public class ConferenceRoom {
 	public void setNote(String note) {
 		Note = note;
 	}
-	
-	
 
 	@Override
 	public String toString() {
@@ -69,7 +68,7 @@ public class ConferenceRoom {
 	public void inputConferenceRoom() {
 		Scanner sca = new Scanner(System.in);
 		System.out.println("Enter ID Conference room");
-		IDroom = Integer.parseInt(sca.nextLine());
+		IDroom = sca.nextLine();
 		System.out.println("Enter Room code");
 		RoomCode = sca.nextLine();
 		System.out.println("Enter price per hour");
