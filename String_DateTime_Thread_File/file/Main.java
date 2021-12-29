@@ -228,24 +228,20 @@ public class Main {
 	private static void readFileObject(ArrayList<Student> listStudent) {
 		
 		try {
-			FileInputStream fis = new FileInputStream("student1.txt");
+			FileInputStream fis = new FileInputStream("D:\\eclipse-workspace\\THUCTAPBUOI1\\src\\file\\student1.txt");
 			InputStreamReader read = new InputStreamReader(fis, StandardCharsets.UTF_8);
 			BufferedReader buf = new BufferedReader(read);
 			
 			String line = null;
 			while((line = buf.readLine()) != null) {
-				if(line.isEmpty()) {
-					continue;
-				}
 				Student student = new Student();
-				student.parse(line);
+				student.parse(line);  // parse()
 				listStudent.add(student);
 				
-				buf.close();
-				read.close();
-				fis.close();
-				
 			}
+			buf.close();
+			read.close();
+			fis.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -254,13 +250,14 @@ public class Main {
 	private static void saveFileObject(ArrayList<Student> listStudent) {
 		System.out.println("Lưu file");
 		try {
-			FileOutputStream fos = new FileOutputStream("student1.txt");
+			FileOutputStream fos = new FileOutputStream("D:\\eclipse-workspace\\THUCTAPBUOI1\\src\\file\\student1.txt");
 			for (Student student : listStudent) {
-				String line = student.getFileLine();
+				String line = student.getFileLine(); /// getFileLine()
 				byte[] b = line.getBytes("utf8");
 				fos.write(b);
-				fos.close();
 			}
+			
+			fos.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
