@@ -5,11 +5,11 @@ public class ConferenceRoom {
 	private String roomCode;
 	private double pricePerHour;
 	private String note;
-	
+
 	public ConferenceRoom() {
 		super();
 	}
-	
+
 	public ConferenceRoom(int id, String roomCode, double pricePerHour, String note) {
 		super();
 		this.id = id;
@@ -49,9 +49,9 @@ public class ConferenceRoom {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	
+
 	@Override
 	public String toString() {
-		return this.id+" - "+this.roomCode+" - "+this.pricePerHour+" - "+this.note;
+		return this.id + " - " + this.roomCode + " - " + this.pricePerHour + " - " + this.note;
 	}
 }

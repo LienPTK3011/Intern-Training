@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 
 public class DateConverter {
 	static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	
+	//method to convert from string to date
 	public static LocalDate stringToDate(String strDate) {
 		try {
 			LocalDate ld = LocalDate.parse(strDate, dtf);
@@ -14,8 +16,9 @@ public class DateConverter {
 		}
 		return null;
 	}
-	
-	public static String DateToString(LocalDate ld) {
+
+	//method to convert from date to string
+	public static String dateToString(LocalDate ld) {
 		return dtf.format(ld);
 	}
 }

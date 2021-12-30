@@ -10,27 +10,28 @@ import java.util.ArrayList;
 
 import model.ConferenceRoom;
 
-public class ioRoom {
+public class IORoom {
 	public static boolean saveFile(ArrayList<ConferenceRoom> listRoom, String path) {
 		try {
 			FileOutputStream fos = new FileOutputStream(path);
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
 			BufferedWriter bw = new BufferedWriter(osw);
-			for(ConferenceRoom room : listRoom) {
-				String line = room.getId()+";"+room.getRoomCode()+";"+room.getPricePerHour()+";"+room.getNote();
+			for (ConferenceRoom room : listRoom) {
+				String line = room.getId() + ";" + room.getRoomCode() + ";" + room.getPricePerHour() + ";"
+						+ room.getNote();
 				bw.write(line);
-				bw.newLine();				
+				bw.newLine();
 			}
 			bw.close();
 			osw.close();
 			fos.close();
-			return true;			
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;
 	}
-	
+
 	public static ArrayList<ConferenceRoom> readFile(String path) {
 		ArrayList<ConferenceRoom> listRoom = new ArrayList<ConferenceRoom>();
 		try {
@@ -38,15 +39,15 @@ public class ioRoom {
 			InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
 			BufferedReader br = new BufferedReader(isr);
 			String line = br.readLine();
-			while(line!=null) {
+			while (line != null) {
 				String[] arr = line.split(";");
-				if(arr.length==4) {
+				if (arr.length == 4) {
 					ConferenceRoom room = new ConferenceRoom();
 					room.setId(Integer.parseInt(arr[0]));
 					room.setRoomCode(arr[1]);
 					room.setPricePerHour(Double.parseDouble(arr[2]));
 					room.setNote(arr[3]);
-					
+
 					listRoom.add(room);
 				}
 				line = br.readLine();

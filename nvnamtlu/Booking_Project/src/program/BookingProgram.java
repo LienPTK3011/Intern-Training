@@ -1,11 +1,14 @@
 package program;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import io.ioRoom;
-import io.ioSeat;
-import io.ioUser;
+import io.IORoom;
+import io.IORoomBooking;
+import io.IOSeat;
+import io.IOSeatBooking;
+import io.IOUser;
 import model.ConferenceRoom;
 import model.Seat;
 import model.User;
@@ -18,6 +21,10 @@ public class BookingProgram {
 	static ArrayList<User> listUser = new ArrayList<User>();
 	static ArrayList<ConferenceRoom> listRoom = new ArrayList<ConferenceRoom>();
 	static ArrayList<Seat> listSeat = new ArrayList<Seat>();
+	static ArrayList<SeatBooking> listSeatBooking = new ArrayList<SeatBooking>();
+	static ArrayList<ConferenceBooking> listRoomBooking = new ArrayList<ConferenceBooking>();
+
+	//method to create menu for manager
 	public static void menuForManager() {
 		System.out.println("--- Menu for Manager ---");
 		System.out.println("1.User");
@@ -25,10 +32,10 @@ public class BookingProgram {
 		System.out.println("3.Seat");
 		System.out.println("4.End program");
 		System.out.println("What do you want?");
-		
+
 		int n = new Scanner(System.in).nextInt();
-		if(n==1) {
-			while(true) {
+		if (n == 1) {
+			while (true) {
 				System.out.println("-- User menu --");
 				System.out.println("1.Create new user");
 				System.out.println("2.Show list user");
@@ -36,16 +43,16 @@ public class BookingProgram {
 				System.out.println("4.Read file");
 				System.out.println("5.Back to main menu");
 				System.out.println("What do you want?");
-				
+
 				int m = new Scanner(System.in).nextInt();
-				switch(m) {
+				switch (m) {
 				case 1:
 					createUser();
 					break;
 				case 2:
 					showUsers();
 					break;
-				case 3: 
+				case 3:
 					saveUserFile();
 					break;
 				case 4:
@@ -56,8 +63,8 @@ public class BookingProgram {
 					break;
 				}
 			}
-		} else if(n==2) {
-			while(true) {
+		} else if (n == 2) {
+			while (true) {
 				System.out.println("-- Room menu --");
 				System.out.println("1.Create new room");
 				System.out.println("2.Show list room");
@@ -65,16 +72,16 @@ public class BookingProgram {
 				System.out.println("4.Read file");
 				System.out.println("5.Back to main menu");
 				System.out.println("What do you want?");
-				
+
 				int m = new Scanner(System.in).nextInt();
-				switch(m) {
+				switch (m) {
 				case 1:
 					createRoom();
 					break;
 				case 2:
 					showRooms();
 					break;
-				case 3: 
+				case 3:
 					saveRoomFile();
 					break;
 				case 4:
@@ -85,8 +92,8 @@ public class BookingProgram {
 					break;
 				}
 			}
-		} else if(n==3) {
-			while(true) {
+		} else if (n == 3) {
+			while (true) {
 				System.out.println("-- Seat menu --");
 				System.out.println("1.Create new seat");
 				System.out.println("2.Show list seat");
@@ -94,16 +101,16 @@ public class BookingProgram {
 				System.out.println("4.Read file");
 				System.out.println("5.Back to main menu");
 				System.out.println("What do you want?");
-				
+
 				int m = new Scanner(System.in).nextInt();
-				switch(m) {
+				switch (m) {
 				case 1:
 					createSeat();
 					break;
 				case 2:
 					showSeats();
 					break;
-				case 3: 
+				case 3:
 					saveSeatFile();
 					break;
 				case 4:
@@ -120,23 +127,27 @@ public class BookingProgram {
 		}
 	}
 	
+	//method to read file seat.txt
 	private static void readSeatFile() {
-		listSeat = ioSeat.readFile("G:\\databk\\seat.txt");
+		listSeat = IOSeat.readFile("G:\\databk\\seat.txt");
 		System.out.println("-->Read file complete");
 	}
-
+	
+	//method to save listSeat in seat.txt
 	private static void saveSeatFile() {
-		if(ioSeat.saveFile(listSeat, "G:\\databk\\seat.txt")) {
+		if (IOSeat.saveFile(listSeat, "G:\\databk\\seat.txt")) {
 			System.out.println("-->Save file success");
 		}
 	}
-
+	
+	//method to show all seat of listSeat
 	private static void showSeats() {
-		for(Seat seat : listSeat) {
+		for (Seat seat : listSeat) {
 			System.out.println(seat);
 		}
 	}
-
+	
+	//method to create new seat
 	private static void createSeat() {
 		System.out.print("Input id: ");
 		int id = new Scanner(System.in).nextInt();
@@ -146,28 +157,32 @@ public class BookingProgram {
 		double pricePerHour = new Scanner(System.in).nextDouble();
 		System.out.print("Input note: ");
 		String note = new Scanner(System.in).nextLine();
-		
+
 		Seat seat = new Seat(id, seatCode, pricePerHour, note);
 		listSeat.add(seat);
 	}
 
+	//method to read file room.txt
 	private static void readRoomFile() {
-		listRoom = ioRoom.readFile("G:\\databk\\room.txt");
+		listRoom = IORoom.readFile("G:\\databk\\room.txt");
 		System.out.println("-->Read file complete");
 	}
-
+	
+	//method to save listRoom in room.txt
 	private static void saveRoomFile() {
-		if(ioRoom.saveFile(listRoom, "G:\\databk\\room.txt")) {
+		if (IORoom.saveFile(listRoom, "G:\\databk\\room.txt")) {
 			System.out.println("-->Save file success");
 		}
 	}
-
+	
+	//method to show all room of listRoom
 	private static void showRooms() {
-		for(ConferenceRoom room : listRoom) {
+		for (ConferenceRoom room : listRoom) {
 			System.out.println(room);
 		}
 	}
-
+	
+	//method to create new room
 	private static void createRoom() {
 		System.out.print("Input id: ");
 		int id = new Scanner(System.in).nextInt();
@@ -177,51 +192,56 @@ public class BookingProgram {
 		double pricePerHour = new Scanner(System.in).nextDouble();
 		System.out.print("Input note: ");
 		String note = new Scanner(System.in).nextLine();
-		
+
 		ConferenceRoom room = new ConferenceRoom(id, roomCode, pricePerHour, note);
 		listRoom.add(room);
 	}
 
+	//method to read file user.txt
 	private static void readUserFile() {
-		listUser = ioUser.readFile("G:\\databk\\user.txt");
+		listUser = IOUser.readFile("G:\\databk\\user.txt");
 		System.out.println("-->Read file complete");
 	}
-
+	
+	//method to save listUser in user.txt
 	private static void saveUserFile() {
-		if(ioUser.saveFile(listUser, "G:\\databk\\user.txt")) {
+		if (IOUser.saveFile(listUser, "G:\\databk\\user.txt")) {
 			System.out.println("-->Save file success");
 		}
 	}
-
+	
+	//method to show all user of listUser
 	private static void showUsers() {
-		for(User user : listUser) {
+		for (User user : listUser) {
 			System.out.println(user);
 		}
 	}
-
+	
+	//method to create new user
 	private static void createUser() {
 		System.out.print("Input Username: ");
 		String username = new Scanner(System.in).nextLine();
 		System.out.print("Input Password: ");
 		String password = new Scanner(System.in).nextLine();
-		
+
 		User user = new User(username, password);
 		listUser.add(user);
 	}
-	
+
+	//method to create menu for user
 	public static void menuForUser() {
 		System.out.println("--- Menu for user ---");
 		System.out.println("1.Booking room");
 		System.out.println("2.Booking seat");
 		System.out.println("3.End program");
 		System.out.println("What do you want?");
-		
+
 		int n = new Scanner(System.in).nextInt();
-		switch(n) {
+		switch (n) {
 		case 1:
 			bookingRoom();
 			break;
-		case 2: 
+		case 2:
 			bookingSeat();
 			break;
 		case 3:
@@ -230,10 +250,27 @@ public class BookingProgram {
 			break;
 		}
 	}
-	
 
+	//method to get the later time between two input times
+	private static LocalTime timeAfter(LocalTime lt1, LocalTime lt2) {
+		if (lt1.isAfter(lt2)) {
+			return lt1;
+		}
+		return lt2;
+	}
+	
+	//method to get the previous time between two input times
+	private static LocalTime timeBefore(LocalTime lt1, LocalTime lt2) {
+		if (lt1.isBefore(lt2)) {
+			return lt1;
+		}
+		return lt2;
+	}
+	
+	//method to booking seat for user
 	private static void bookingSeat() {
-		listSeat = ioSeat.readFile("G:\\databk\\seat.txt");
+		listSeat = IOSeat.readFile("G:\\databk\\seat.txt");
+		listSeatBooking = IOSeatBooking.readFile("G:\\databk\\seatBooking.txt");
 		System.out.print("Input seat code: ");
 		String seatCode = new Scanner(System.in).nextLine();
 		System.out.print("Input Date(dd/MM/yyyy): ");
@@ -242,31 +279,61 @@ public class BookingProgram {
 		String strST = new Scanner(System.in).nextLine();
 		System.out.print("Input end time(HH:mm): ");
 		String strET = new Scanner(System.in).nextLine();
-		double pricePerHour = 1.5; 
-		
-		SeatBooking seatBooking = new SeatBooking(0, DateConverter.stringToDate(strDay), TimeConverter.stringToTime(strST), TimeConverter.stringToTime(strET), pricePerHour, seatCode);
-		
+
+		SeatBooking seatBooking = new SeatBooking();
+		if (listSeatBooking.size() == 0) {
+			seatBooking.setId(1);
+		} else {
+			seatBooking.setId((listSeatBooking.get(listSeatBooking.size() - 1).getId()) + 1);
+		}
+		seatBooking.setSeatCode(seatCode);
+		seatBooking.setDay(DateConverter.stringToDate(strDay));
+		seatBooking.setStartTime(TimeConverter.stringToTime(strST));
+		seatBooking.setEndTime(TimeConverter.stringToTime(strET));
+
 		int temp = 0;
-		for(int i=0; i<listSeat.size(); i++) {
-			if(listSeat.get(i).getSeatCode().equals(seatCode)) {
+		boolean overlapTime = false;
+		for (int i = 0; i < listSeat.size(); i++) {
+			if (listSeat.get(i).getSeatCode().equals(seatCode)) {
 				temp = 1;
-				System.out.println("--> Done booking seat with:");
-				System.out.println("Seat code: "+seatBooking.getSeatCode());
-				System.out.println("Date: "+seatBooking.getDay());
-				System.out.println("Time: "+seatBooking.getStartTime()+" to "+seatBooking.getEndTime());
 				seatBooking.setPrice(listSeat.get(i).getPricePerHour());
-				System.out.println("Price per hour: "+seatBooking.getPrice());
-				System.out.println("Your must to pay "+seatBooking.calculatePrice()+"$");
-				break;
+				for (int j = 0; j < listSeatBooking.size(); j++) {
+					if (seatBooking.getDay().equals(listSeatBooking.get(j).getDay())
+							&& timeAfter(seatBooking.getStartTime(), listSeatBooking.get(j).getStartTime())
+									.isBefore(timeBefore(seatBooking.getEndTime(), listSeatBooking.get(j).getEndTime()))) {
+						overlapTime = true;
+						break;
+					}
+				}
+				if (seatBooking.getStartTime().isAfter(seatBooking.getEndTime())) {
+					System.err.println("Can not booking for this time!");
+				} else {
+					if (overlapTime) {
+						System.err.println("This seat has been booked at this time!");
+						break;
+					} else {
+						System.out.println("--> Done booking seat with:");
+						System.out.println("Seat code: " + seatBooking.getSeatCode());
+						System.out.println("Date: " + DateConverter.dateToString(seatBooking.getDay()));
+						System.out.println("Time: " + seatBooking.getStartTime() + " to " + seatBooking.getEndTime());
+						System.out.println("Price per hour: " + seatBooking.getPrice());
+						System.out.println("Your must to pay " + seatBooking.calculatePrice() + "$");
+						listSeatBooking.add(seatBooking);
+						IOSeatBooking.saveFile(listSeatBooking, "G:\\databk\\seatBooking.txt");
+						break;
+					}
+				}
 			}
 		}
-		if(temp==0) {
+		if (temp == 0) {
 			System.err.println("Seat code does not exist!");
 		}
 	}
-
+	
+	//method to booking room for user
 	private static void bookingRoom() {
-		listRoom = ioRoom.readFile("G:\\databk\\room.txt");
+		listRoom = IORoom.readFile("G:\\databk\\room.txt");
+		listRoomBooking = IORoomBooking.readFile("G:\\databk\\roomBooking.txt");
 		System.out.print("Input room code: ");
 		String roomCode = new Scanner(System.in).nextLine();
 		System.out.print("Input Date(dd/MM/yyyy): ");
@@ -275,62 +342,92 @@ public class BookingProgram {
 		String strST = new Scanner(System.in).nextLine();
 		System.out.print("Input end time(HH:mm): ");
 		String strET = new Scanner(System.in).nextLine();
-		double pricePerHour = 1.5; 
-		
-		ConferenceBooking roomBooking = new ConferenceBooking(0, DateConverter.stringToDate(strDay), TimeConverter.stringToTime(strST), TimeConverter.stringToTime(strET), pricePerHour, roomCode);
-		
+
+		ConferenceBooking roomBooking = new ConferenceBooking();
+		if (listRoomBooking.size() == 0) {
+			roomBooking.setId(1);
+		} else {
+			roomBooking.setId(listRoomBooking.get(listRoomBooking.size() - 1).getId() + 1);
+		}
+		roomBooking.setRoomCode(roomCode);
+		roomBooking.setDay(DateConverter.stringToDate(strDay));
+		roomBooking.setStartTime(TimeConverter.stringToTime(strST));
+		roomBooking.setEndTime(TimeConverter.stringToTime(strET));
+
 		int temp = 0;
-		for(int i=0; i<listRoom.size(); i++) {
-			if(listRoom.get(i).getRoomCode().equals(roomCode)) {
+		boolean overlapTime = false;
+		for (int i = 0; i < listRoom.size(); i++) {
+			if (listRoom.get(i).getRoomCode().equals(roomCode)) {
 				temp = 1;
-				System.out.println("--> Done booking conference room with:");
-				System.out.println("Room code: "+roomBooking.getRoomCode());
-				System.out.println("Date: "+roomBooking.getDay());
-				System.out.println("Time: "+roomBooking.getStartTime()+" to "+roomBooking.getEndTime());
 				roomBooking.setPrice(listRoom.get(i).getPricePerHour());
-				System.out.println("Price per hour: "+roomBooking.getPrice());
-				System.out.println("Your must to pay "+roomBooking.calculatePrice()+"$");
-				break;
+				for (int j = 0; j < listRoomBooking.size(); j++) {
+					if (roomBooking.getDay().equals(listRoomBooking.get(j).getDay())
+							&& timeAfter(roomBooking.getStartTime(), listRoomBooking.get(j).getStartTime())
+									.isBefore(timeBefore(roomBooking.getEndTime(), listRoomBooking.get(j).getEndTime()))) {
+						overlapTime = true;
+						break;
+					}
+				}
+				if (roomBooking.getStartTime().isAfter(roomBooking.getEndTime())) {
+					System.err.println("Can not booking for this time!");
+				} else {
+					if (overlapTime) {
+						System.err.println("This room has been booked at this time!");
+						break;
+					} else {
+						System.out.println("--> Done booking conference room with:");
+						System.out.println("Room code: " + roomBooking.getRoomCode());
+						System.out.println("Date: " + DateConverter.dateToString(roomBooking.getDay()));
+						System.out.println("Time: " + roomBooking.getStartTime() + " to " + roomBooking.getEndTime());
+						System.out.println("Price per hour: " + roomBooking.getPrice());
+						System.out.println("Your must to pay " + roomBooking.calculatePrice() + "$");
+
+						listRoomBooking.add(roomBooking);
+						IORoomBooking.saveFile(listRoomBooking, "G:\\databk\\roomBooking.txt");
+						break;
+					}
+				}
 			}
 		}
-		if(temp==0) {
+		if (temp == 0) {
 			System.err.println("Room code does not exist!");
 		}
 	}
-
+	
+	//method handle login to program
 	public static int login() {
 		ArrayList<User> listManager = new ArrayList<User>();
-		listManager = ioUser.readFile("G:\\databk\\manager.txt");
+		listManager = IOUser.readFile("G:\\databk\\manager.txt");
 		ArrayList<User> listUser = new ArrayList<User>();
-		listUser = ioUser.readFile("G:\\databk\\user.txt");
+		listUser = IOUser.readFile("G:\\databk\\user.txt");
 		System.out.println("---- Login ----");
 		System.out.print("Username: ");
 		String username = new Scanner(System.in).nextLine();
 		System.out.print("Password: ");
 		String password = new Scanner(System.in).nextLine();
-		for(User manager : listManager) {
-			if(manager.getUsername().equals(username)&&manager.getPassword().equals(password)) {
+		for (User manager : listManager) {
+			if (manager.getUsername().equals(username) && manager.getPassword().equals(password)) {
 				return 1;
 			}
 		}
-		for(User user : listUser) {
-			if(user.getUsername().equals(username)&&user.getPassword().equals(password)) {
+		for (User user : listUser) {
+			if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
 				return 2;
 			}
 		}
 		return 3;
 	}
-
+	
 	public static void main(String[] args) {
 		System.out.println("***Booking Program***");
-		int role = login();
-		while(true) {
-			switch(role) {
-			case 1: 
+		int role = login(); //role = 1: manager, role = 2: user, role = 3: login failed
+		while (true) {
+			switch (role) {
+			case 1:
 				menuForManager();
 				break;
 			case 2:
-				menuForUser(); 
+				menuForUser();
 				break;
 			case 3:
 				System.err.println("Login failed, username or password is wrong!");
