@@ -3,39 +3,49 @@ package Project1;
 import java.util.Scanner;
 
 public class User {
-	private String Username;
-	private String Password;
-	
-	public User(String username, String password) {
-		super();
-		Username = username;
-		Password = password;
-	}
+	private String username;
+	private String password;
 
 	public User() {
-		super();
+		
 	}
+
+
+	public User(String username, String password) {
+		
+		this.username = username;
+		this.password = password;
+	}
+
+	
+	
 
 	public String getUsername() {
-		return Username;
+		return username;
 	}
+
 
 	public void setUsername(String username) {
-		Username = username;
+		this.username = username;
 	}
+
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
+
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
+
 
 	@Override
 	public String toString() {
-		return "User [Username=" + Username + ", Password=" + Password + "]";
+		return "User [username=" + username + ", password=" + password + "]";
 	}
+	
+	
 	
 	public void outputUser() {
 		System.out.println(toString());
@@ -43,24 +53,25 @@ public class User {
 	
 	public void inputUser() {
 		Scanner sca = new Scanner(System.in);
-		System.out.println("Enter Username");
-		Username = sca.nextLine();
-		System.out.println("Enter Password");
-		Password = sca.nextLine();
+		System.out.println("Enter username");
+		username = sca.nextLine();
+		System.out.println("Enter password");
+		password = sca.nextLine();
 	}
 	
-	// đọc theo dấu ,
+	// get line format followed by ","
 	public String getFileLine() {
-		return Username + "," + Password  + "\n";
+		return username + "," + password  + "\n";
 		
 	}
 	
+	// parse string
 	public void parse(String line) {
 		
 		try {
 			String[] p = line.split(",");
-			Username = p[0];
-			Password = p[1];
+			username = p[0];
+			password = p[1];
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

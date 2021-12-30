@@ -13,7 +13,7 @@ import file.Student;
 public class Login {
 	
 	
-	// kiểm tra tài khoản mật khẩu
+	// check login usename password
 	public boolean checkLogin(ArrayList<User> listUser) {
 		
 		Scanner sca = new Scanner(System.in);
@@ -22,22 +22,22 @@ public class Login {
 		System.out.println("Enter Password");
 		String check2 = sca.nextLine();
 		
-		boolean bl = false;
+		boolean check = false;
 		for (User user : listUser) {
 			if(user.getUsername().equals(check1) && user.getPassword().equals(check2)){
-				bl = true;			
+				check = true;			
 			}
 		}
-		if(bl == true) {
+		if(check == true) {
 			System.out.println("Logged in successfully");
 		}else {
 			System.out.println("Logged in failure. Please try again!");
 		}
-		return bl;
+		return check;
 		
 	}
 	
-	// đọc file user
+	// read file user
 	public void readFileUser(ArrayList<User> listUser) {
 		try {
 			FileInputStream fis = new FileInputStream("D:\\eclipse-workspace\\THUCTAPBUOI1\\src\\Project1\\user.txt");
@@ -61,7 +61,7 @@ public class Login {
 		}
 	}
 	
-	// ghi file user
+	// write file user
 	public void saveFileUser(ArrayList<User> listUser) {
 		System.out.println("save file user.txt");
 		try {
@@ -78,7 +78,7 @@ public class Login {
 		}
 	}
 	
-	// thêm tài khoản mật khẩu người dùng
+	// insert usename password
 	public void insertUser(ArrayList<User> listUser) {
 		System.out.println("insert User");
 		Scanner sca = new Scanner(System.in);
@@ -87,7 +87,7 @@ public class Login {
 		listUser.add(user);
 	}
 	
-	// sửa tài khoản mật khẩu người dùng
+	// update usename password
 	public void updateUser(ArrayList<User> listUser)  {	
 		Scanner sca = new Scanner(System.in);
 		System.out.println("update User");
@@ -103,7 +103,7 @@ public class Login {
 
 	}
 	
-	// xóa tài khoản mật khẩu người dùng
+	// delete usename password
 	public void deleteUser(ArrayList<User> listUser)  {	
 		Scanner sca = new Scanner(System.in);
 		System.out.println("delete User");
@@ -119,7 +119,7 @@ public class Login {
 
 	}
 	
-	// hiển thị tài khoản mật khẩu
+	// view usename password
 	public void viewUser(ArrayList<User> listUser) {
 		for (User user : listUser) {
 			user.outputUser();

@@ -3,63 +3,61 @@ package Project1;
 import java.util.Scanner;
 
 public class Seat {
-	private String IDseat;
-	private String SeatCode;
-	private float PricePerHour;
-	private String Note;
+	private String id;
+	private String seatCode;
+	private float pricePerHour;
+	private String note;
 
-
+	
 	public Seat() {
-		super();
+		
 	}
 
-	public Seat(String iDseat, String seatCode, float pricePerHour, String note) {
-		super();
-		IDseat = iDseat;
-		SeatCode = seatCode;
-		PricePerHour = pricePerHour;
-		Note = note;
+	public Seat(String id, String seatCode, float pricePerHour, String note) {
+
+		this.id = id;
+		this.seatCode = seatCode;
+		this.pricePerHour = pricePerHour;
+		this.note = note;
 	}
+
 	
 	
-
-	public String getIDseat() {
-		return IDseat;
+	public String getId() {
+		return id;
 	}
 
-	public void setIDseat(String iDseat) {
-		IDseat = iDseat;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getSeatCode() {
-		return SeatCode;
+		return seatCode;
 	}
 
 	public void setSeatCode(String seatCode) {
-		SeatCode = seatCode;
+		this.seatCode = seatCode;
 	}
 
 	public float getPricePerHour() {
-		return PricePerHour;
+		return pricePerHour;
 	}
 
 	public void setPricePerHour(float pricePerHour) {
-		PricePerHour = pricePerHour;
+		this.pricePerHour = pricePerHour;
 	}
 
 	public String getNote() {
-		return Note;
+		return note;
 	}
 
 	public void setNote(String note) {
-		Note = note;
+		this.note = note;
 	}
 
-	
-	
 	@Override
 	public String toString() {
-		return "Seat [IDseat=" + IDseat + ", SeatCode=" + SeatCode + ", PricePerHour=" + PricePerHour + ", Note=" + Note + "]";
+		return "Seat [id=" + id + ", seatCode=" + seatCode + ", pricePerHour=" + pricePerHour + ", note=" + note + "]";
 	}
 
 	public void outputSeat() {
@@ -69,13 +67,13 @@ public class Seat {
 	public void inputSeat() {
 		Scanner sca = new Scanner(System.in);
 		System.out.println("Enter ID seat");
-		IDseat = sca.nextLine();
+		id = sca.nextLine();
 		System.out.println("Enter Seat code");
-		SeatCode = sca.nextLine();
+		seatCode = sca.nextLine();
 		System.out.println("Enter price per hour");
-		PricePerHour = Float.parseFloat(sca.nextLine());
+		pricePerHour = Float.parseFloat(sca.nextLine());
 		System.out.println("Enter note");
-		Note = sca.nextLine();
+		note = sca.nextLine();
 	}
 	
 	

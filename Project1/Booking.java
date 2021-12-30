@@ -11,7 +11,11 @@ public class Booking {
 	}
 	
 	public void bookingSeatRoom() {
+		SeatBooking seatBooking = new SeatBooking();
+		ConferenceBooking roomBooking = new ConferenceBooking();
 		
+		seatBooking.inputSeatBooking();
+		roomBooking.inputConferenceBooking();
 	}
 	
 	

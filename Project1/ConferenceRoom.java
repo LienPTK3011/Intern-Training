@@ -3,62 +3,62 @@ package Project1;
 import java.util.Scanner;
 
 public class ConferenceRoom {
-	private String IDroom;
-	private String RoomCode;
-	private float PricePerHour;
-	private String Note;
-
+	private String id;
+	private String roomCode;
+	private float pricePerHour;
+	private String note;
+	
 
 	public ConferenceRoom() {
-		super();
+	
 	}
 
-	public ConferenceRoom(String iDroom, String roomCode, float pricePerHour, String note) {
-		super();
-		IDroom = iDroom;
-		RoomCode = roomCode;
-		PricePerHour = pricePerHour;
-		Note = note;
+	public ConferenceRoom(String id, String roomCode, float pricePerHour, String note) {
+	
+		this.id = id;
+		this.roomCode = roomCode;
+		this.pricePerHour = pricePerHour;
+		this.note = note;
 	}
 	
 	
 
-	public String getIDroom() {
-		return IDroom;
+	public String getId() {
+		return id;
 	}
 
-	public void setIDroom(String iDroom) {
-		IDroom = iDroom;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getRoomCode() {
-		return RoomCode;
+		return roomCode;
 	}
 
 	public void setRoomCode(String roomCode) {
-		RoomCode = roomCode;
+		this.roomCode = roomCode;
 	}
 
 	public float getPricePerHour() {
-		return PricePerHour;
+		return pricePerHour;
 	}
 
 	public void setPricePerHour(float pricePerHour) {
-		PricePerHour = pricePerHour;
+		this.pricePerHour = pricePerHour;
 	}
 
 	public String getNote() {
-		return Note;
+		return note;
 	}
 
 	public void setNote(String note) {
-		Note = note;
+		this.note = note;
 	}
 
 	@Override
 	public String toString() {
-		return "ConferenceRoom [IDroom=" + IDroom + ", RoomCode=" + RoomCode + ", PricePerHour=" + PricePerHour
-				+ ", Note=" + Note + "]";
+		return "ConferenceRoom [id=" + id + ", roomCode=" + roomCode + ", pricePerHour=" + pricePerHour
+				+ ", note=" + note + "]";
 	}
 
 	public void outputConferenceRoom() {
@@ -68,12 +68,12 @@ public class ConferenceRoom {
 	public void inputConferenceRoom() {
 		Scanner sca = new Scanner(System.in);
 		System.out.println("Enter ID Conference room");
-		IDroom = sca.nextLine();
+		id = sca.nextLine();
 		System.out.println("Enter Room code");
-		RoomCode = sca.nextLine();
+		roomCode = sca.nextLine();
 		System.out.println("Enter price per hour");
-		PricePerHour = Float.parseFloat(sca.nextLine());
+		pricePerHour = Float.parseFloat(sca.nextLine());
 		System.out.println("Enter note");
-		Note = sca.nextLine();
+		note = sca.nextLine();
 	}
 }

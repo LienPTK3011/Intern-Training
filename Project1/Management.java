@@ -12,7 +12,7 @@ public class Management {
 	
 	
 	
-	// đọc file seat.txt
+	// read file seat.txt
 	public void readFileSeat(ArrayList<SeatBooking> listSeatBooking) {
 		System.out.println("read file seat.txt");
 		try {
@@ -37,7 +37,7 @@ public class Management {
 		}
 	}
 	
-	// đọc file conferenceroom.txt
+	// read file conferenceroom.txt
 	public void readFileConferenceRoom(ArrayList<ConferenceBooking> listConferenceBooking) {
 		System.out.println("read file conferenceroom.txt");
 		try {
@@ -63,7 +63,7 @@ public class Management {
 		}
 	}
 	
-	// ghi  file seat.txt
+	// write  file seat.txt
 	public void saveFileSeat(ArrayList<SeatBooking> listSeatBooking) {
 		System.out.println("save file seat.txt");
 		try {
@@ -79,7 +79,7 @@ public class Management {
 		}
 	}
 	
-	// ghi file conferenceroom.txt
+	// write file conferenceroom.txt
 	public void saveFileConferenceRoom(ArrayList<ConferenceBooking> listConferenceBooking) {
 		System.out.println("save file conferenceroom.txt");
 		try {
@@ -96,7 +96,7 @@ public class Management {
 		}
 	}
 	
-	// đặt thêm chỗ ngồi 
+	// insert seat booking
 	public void insertSeatBooking(ArrayList<SeatBooking> listSeatBooking) {
 		System.out.println("insert SeatBooking");
 		Scanner sca = new Scanner(System.in);
@@ -105,7 +105,7 @@ public class Management {
 		listSeatBooking.add(s);
 	}
 	
-	// đặt thêm phòng
+	// insert Conference Booking
 	public void insertConferenceBooking(ArrayList<ConferenceBooking> listConferenceBooking) {
 		System.out.println("insert ConferenceBooking");
 		Scanner sca = new Scanner(System.in);
@@ -114,21 +114,21 @@ public class Management {
 		listConferenceBooking.add(s);
 	}
 	
-	// hiển thị chỗ ngồi
+	// view seat booking
 	public void viewSeatBooking(ArrayList<SeatBooking> listSeatBooking) {
 		for (SeatBooking s : listSeatBooking) {
 			s.outputSeatBooking();
 		}
 	}
 		
-	// hiển thị phòng
+	// view conference booking
 	public void viewConferenceBooking(ArrayList<ConferenceBooking> listConferenceBooking) {
 		for (ConferenceBooking s : listConferenceBooking) {
 			s.outputConferenceBooking();
 		}
 	}	
 	
-	public void CalculateAll(ArrayList<SeatBooking> listSeatBooking, ArrayList<ConferenceBooking> listConferenceBooking) {
+	public void calculateAll(ArrayList<SeatBooking> listSeatBooking, ArrayList<ConferenceBooking> listConferenceBooking) {
 		
 	}
 }
