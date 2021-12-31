@@ -1,3 +1,0 @@
-user1;abc123
-user2;abc123
-user3;abc123
