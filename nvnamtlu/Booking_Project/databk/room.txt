@@ -1,0 +1,5 @@
+1;r01;20.5;rankA
+2;r06;19.5;rankB
+3;r11;19.0;rankC
+4;r21;18.5;rankD
+5;r35;18.0;rankE
