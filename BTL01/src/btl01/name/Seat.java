@@ -12,7 +12,7 @@ package btl01.name;
 public class Seat {
     private String id;
     private String setcode;
-    private String priceperhour;
+    private double priceperhour;
     private String note;
 
     public String getId() {
@@ -31,14 +31,14 @@ public class Seat {
         this.setcode = setcode;
     }
 
-    public String getPriceperhour() {
+    public double getPriceperhour() {
         return priceperhour;
     }
 
-    public void setPriceperhour(String priceperhour) {
+    public void setPriceperhour(double priceperhour) {
         this.priceperhour = priceperhour;
     }
-
+    
     public String getNote() {
         return note;
     }
@@ -50,7 +50,7 @@ public class Seat {
     public Seat() {
     }
 
-    public Seat(String id, String setcode, String priceperhour, String note) {
+    public Seat(String id, String setcode, double priceperhour, String note) {
         this.id = id;
         this.setcode = setcode;
         this.priceperhour = priceperhour;

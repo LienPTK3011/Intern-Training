@@ -53,7 +53,7 @@ public class Seatio {
 					Seat seat = new Seat();
 					seat.setId(arr[0]);
 					seat.setSetcode(arr[1]);
-					seat.setPriceperhour(arr[2]);
+					seat.setPriceperhour(Double.parseDouble(arr[2]));
 					seat.setNote(arr[3]);
 
 					listSeat.add(seat);

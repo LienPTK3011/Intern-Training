@@ -53,7 +53,7 @@ public class Roomio {
 					ConferenceRoom room = new ConferenceRoom();
 					room.setId(arr[0]);
 					room.setRoomcode(arr[1]);
-					room.setPriceperhour(arr[2]);
+					room.setPriceperhour(Double.parseDouble(arr[2]));
 					room.setNote(arr[3]);
 
 					listRoom.add(room);

@@ -41,7 +41,7 @@ public class BTL01 {
     }
     private static int login() {
 		ArrayList<User> listUser = new ArrayList<User>();
-		listUser = readFile("C:\\Users\\Asus\\Documents\\NetBeansProjects\\BTL01\\src\\btl01\\bt1.txt");
+		listUser = readFile("C:\\Users\\Asus\\Documents\\NetBeansProjects\\BTL01\\src\\btl01\\txt\\user.txt");
 		System.out.println("----Login----");
 		System.out.print("Username: ");
 		String username = new Scanner(System.in).nextLine();
@@ -56,21 +56,50 @@ public class BTL01 {
 	}
     //read file seat.txt
 	private static void readSeat() {
-		listSeat = Seatio.read("C:\\Users\\Asus\\Documents\\NetBeansProjects\\BTL01\\src\\btl01\\seat.txt");
+		listSeat = Seatio.read("C:\\Users\\Asus\\Documents\\NetBeansProjects\\BTL01\\src\\btl01\\txt\\seat.txt");
 	}
+        //save listSeat in seat.txt
+	private static void saveSeat() {
+		if (Seatio.save(listSeat, "C:\\Users\\Asus\\Documents\\NetBeansProjects\\BTL01\\src\\btl01\\txt\\seat.txt")) {
+		
+                }
+	}
+        
+        //show all seat of listSeat
+	private static void showSeat() {
+		for (Seat seat : listSeat) {
+			System.out.println(seat);
+		}
+	}
+        //create new seat
+	private static void createSeat() {
+		System.out.print("Id: ");
+		String id = new Scanner(System.in).nextLine();
+		System.out.print("Seat code: ");
+		String setcode = new Scanner(System.in).nextLine();
+		System.out.print("Price per hour: ");
+		double priceperhour = new Scanner(System.in).nextDouble();
+		System.out.print("Note: ");
+		String note = new Scanner(System.in).nextLine();
+		Seat seat = new Seat(id, setcode, priceperhour, note);
+		listSeat.add(seat);
+	}
+        
+        
+        
+        
+        
         //read file room.txt
 	private static void readRoom() {
-		listRoom = Roomio.readFile("C:\\Users\\Asus\\Documents\\NetBeansProjects\\BTL01\\src\\btl01\\seat.txt");
+		listRoom = Roomio.readFile("C:\\Users\\Asus\\Documents\\NetBeansProjects\\BTL01\\src\\btl01\\txt\\seat.txt");
 	}
 	
-    private static void menu() {
-          System.out.println("--- Menu for Manager ---");
-		System.out.println("1.User");
-		System.out.println("2.Room");
-		System.out.println("3.Seat");
-		System.out.println("4.End program");
+    private static void menu() {  
+                System.out.println("--- Menu for Manager ---");
+		System.out.println("1.Room");
+		System.out.println("2.Seat");
+		System.out.println("3.End program");
 		System.out.println("What do you want?");  
-                int m = new Scanner(System.in).nextInt();
-             
+            
 	}
 }
