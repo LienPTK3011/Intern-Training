@@ -41,6 +41,8 @@ public class Management {
 			}
 		}
     }
+    //-------------------------------------------------------------------------------------------
+    //login
     private static int login() {
 		ArrayList<User> listUser = new ArrayList<User>();
 		listUser = readFile("C:\\Users\\Asus\\Documents\\NetBeansProjects\\BTL01\\src\\btl01\\txt\\user.txt");
@@ -56,6 +58,7 @@ public class Management {
 		}
 		return 2;
 	}
+    //---------------------------------------------------------------------------------------------
     //read file seat.txt
 	private static void readSeat() {
 		listSeat = Seatio.read("C:\\Users\\Asus\\Documents\\NetBeansProjects\\BTL01\\src\\btl01\\txt\\seat.txt");
@@ -89,7 +92,7 @@ public class Management {
         
         
         
-        
+     //---------------------------------------------------------------------------   
         
         //read file room.txt
 	private static void readRoom() {
@@ -122,12 +125,13 @@ public class Management {
 		listRoom.add(room);
 	}
         
-        
+    //============================menu===============================================    
     private static void menu() {  
                 System.out.println("--- Menu for Manager ---");
 		System.out.println("1.Room");
 		System.out.println("2.Seat");
-		System.out.println("3.End program");
+                System.out.println("3.Booking");
+		System.out.println("4.End program");
 		System.out.println("What do you want?");
                 int m = new Scanner(System.in).nextInt();
 				switch (m) {
@@ -137,16 +141,19 @@ public class Management {
 				case 2:
 					menu2();
 					break;
-				case 3:
+                                case 3:
+					menu3();
+					break;
+				case 4:
                                     login();
 					break;
                                 default:
                                     System.out.println("Agian:");
                                     break;
 				}
-                                while(m!=3);
+                                while(m!=4);
 	}
-    
+    //========================menu room======================
     private static void menu1() {  
                 System.out.println("--- Room for Manager ---");
 		System.out.println("1.Add");
@@ -177,7 +184,7 @@ public class Management {
 				}
                                 while(m!=5);
 	}
-    
+    //===========================menu seat========================================
     private static void menu2() {  
                 System.out.println("--- Seat for Manager ---");
 		System.out.println("1.Add");
@@ -208,4 +215,6 @@ public class Management {
 				}
                                 while(m!=5);
 	}
+    
+    //==============================menu booking===========================
 }
