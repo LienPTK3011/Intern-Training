@@ -1,23 +1,27 @@
 package Project1;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class ConferenceBooking {
 
 	private String id;
-	private String day;
-	private String startTime;
-	private String endTime;
+	private LocalDate day;
+	private LocalTime startTime;
+	private LocalTime endTime;
 	private String roomID;
 	private float price;
-	
+
 
 	public ConferenceBooking() {
 		
 	}
 
 
-	public ConferenceBooking(String id, String day, String startTime, String endTime, String roomID, float price) {
+	public ConferenceBooking(String id, LocalDate day, LocalTime startTime, LocalTime endTime, String roomID,
+			float price) {
 		
 		this.id = id;
 		this.day = day;
@@ -27,8 +31,9 @@ public class ConferenceBooking {
 		this.price = price;
 	}
 
-	
 
+	
+	
 	public String getId() {
 		return id;
 	}
@@ -39,32 +44,32 @@ public class ConferenceBooking {
 	}
 
 
-	public String getDay() {
+	public LocalDate getDay() {
 		return day;
 	}
 
 
-	public void setDay(String day) {
+	public void setDay(LocalDate day) {
 		this.day = day;
 	}
 
 
-	public String getStartTime() {
+	public LocalTime getStartTime() {
 		return startTime;
 	}
 
 
-	public void setStartTime(String startTime) {
+	public void setStartTime(LocalTime startTime) {
 		this.startTime = startTime;
 	}
 
 
-	public String getEndTime() {
+	public LocalTime getEndTime() {
 		return endTime;
 	}
 
 
-	public void setEndTime(String endTime) {
+	public void setEndTime(LocalTime endTime) {
 		this.endTime = endTime;
 	}
 
@@ -101,45 +106,16 @@ public class ConferenceBooking {
 	}
 	
 
-	public void inputConferenceBooking() {
-		Scanner sca = new Scanner(System.in);
-		System.out.println("Enter ID Seat Booking");
-		id = sca.nextLine();
-		System.out.println("Enter day");
-		day = sca.nextLine();
-		System.out.println("Enter Start Time");
-		startTime = sca.nextLine();
-		System.out.println("Enter End Time");
-		endTime = sca.nextLine();
-		System.out.println("Enter Room ID");
-		roomID = sca.nextLine();
-	}
 	
 	public float calculatePrice() {
-		return price ; // price = (End time - Start time) * getpricePerHour()
-		
-	}
-	
-	// get line format followed by ","
-	public String getFileLine() {
-		return id + "," + day + "," + startTime + "," + endTime + "," + roomID + "," + calculatePrice()  + "\n";
+		Duration duration = Duration.between(startTime, endTime);
+		long hours = duration.toHours();
+		long minutes = duration.toMinutes() - hours * 60;
+		double payMoney = (hours + (minutes * 1.0 / 60)) * this.getPrice();
+		return (float) Math.round(payMoney * 100) / 100;
 		
 	}
 	
 	
-	// parse string
-	public void parse(String line) {
-		
-		try { //Float.parseFloat(p[1]);
-			String[] p = line.split(",");
-			id = p[0];
-			day = p[1];
-			startTime = p[2];
-			endTime = p[3];
-			roomID = p[4];
-			price = Float.parseFloat(p[5]);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
+	
 }

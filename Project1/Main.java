@@ -6,12 +6,16 @@ import java.util.Scanner;
 public class Main {
 
 	static ArrayList<User> listUser = new ArrayList<>();
+	
+	static ArrayList<Seat> listSeat = new ArrayList<>();
+	static ArrayList<ConferenceRoom> listConferenceRooms = new ArrayList<>();
+	
 	static ArrayList<SeatBooking> listSeatBooking = new ArrayList<>();
 	static ArrayList<ConferenceBooking> listConferenceBooking = new ArrayList<>();
 	
 	static Login login = new Login();
-	static Management management = new Management();
-	static Booking booking = new Booking();
+	static ManageSeatRoom managerSeatRoom = new ManageSeatRoom();
+	static ManageBooking booking = new ManageBooking();
 	
 	static Scanner sca = new Scanner(System.in);
 	
@@ -61,120 +65,173 @@ public class Main {
 		} while (chose !=6);
 	}
 	
-	// choose management option
-	public static  void managerSeatRoom() {
-		int option =0;
-		System.out.println("==== Management seat - room ===");
-		System.out.println("Option 1: Seat management");
-		System.out.println("Option 2: Room management");
-		System.out.println("Option 3: back to main menu!");
-		System.out.println("=> choose option: ");
-		try {
-			option = Integer.parseInt(sca.nextLine());
-		} catch (Exception e) {
-			System.err.println("you must enter the number");
-		}
-		
-		do {
-			switch (option) {
-			case 1:
-				managerSeat();
-				break;
-			case 2:
-				managerRoom();
-				break;
-			case 3:
-				System.out.println("back to main menu !");
-				break;
-			default:
-				System.err.println("choose again");
-				break;
-			}
-		} while (option !=3);
 
-	}
 	
 	// management seat
 	public static  void managerSeat() {
-		int chose1 = 0;
+		int chose = 0;
+
 		do {
 			System.out.println("==== Seat Management ===");
 			System.out.println("function 1: read file seat.txt");
 			System.out.println("function 2: view seat");
 			System.out.println("function 3: insert seat");
 			System.out.println("function 4: save file seat.txt");
-			System.out.println("function 5: back !");
+			System.out.println("function 5: back to main menu!");
 				
 			try {
 				System.out.println("=> choose function ");
-				chose1 = Integer.parseInt(sca.nextLine());
+				chose = Integer.parseInt(sca.nextLine());
 			} catch (Exception e) {
 				System.err.println("you must enter the number");
 			}
 			
-			switch (chose1) {
-			case 1: 		
-				management.readFileSeat(listSeatBooking);
+			switch (chose) {
+			case 1:
+				managerSeatRoom.readFileSeat(listSeat);
 				break;
 			case 2: 		
-				management.viewSeatBooking(listSeatBooking);
+				managerSeatRoom.viewSeat(listSeat);
 				break;
 			case 3:
-				management.insertSeatBooking(listSeatBooking);
+				managerSeatRoom.insertSeat(listSeat);
 				break;
 			case 4:
-				management.saveFileSeat(listSeatBooking);
+				managerSeatRoom.saveFileSeat(listSeat);
 				break;
 			case 5:
-				System.out.println("back !");
+				System.out.println("back to main menu");
 				break;
 			default:
 				System.out.println("choose again");
 				break;
 			}
-		} while (chose1 !=5);
+		} while (chose !=5);
 	}
 	
 	
 	// management Room
 	public static  void managerRoom() {
-		int chose2 = 0;
+		int chose = 0;
+		
 		do {
 			System.out.println("==== Room Management ===");
 			System.out.println("function 1: read file conferenceroom.txt");
 			System.out.println("function 2: view Conference Room");
 			System.out.println("function 3: insert Conference Room");
 			System.out.println("function 4: save file conferenceroom.txt");
-			System.out.println("function 5: back !");
+			System.out.println("function 5: back to main menu!");
 				
 			try {
 				System.out.println("=> choose function ");
-				chose2 = Integer.parseInt(sca.nextLine());
+				chose = Integer.parseInt(sca.nextLine());
 			} catch (Exception e) {
 				System.err.println("you must enter the number");
 			}
 			
-			switch (chose2) {
-			case 1: 		
-				management.readFileConferenceRoom(listConferenceBooking);
+			switch (chose) {
+			case 1:
+				managerSeatRoom.readFileConferenceRoom(listConferenceRooms);
 				break;
 			case 2: 		
-				management.viewConferenceBooking(listConferenceBooking);
+				managerSeatRoom.viewConferenceRoom(listConferenceRooms);
 				break;
 			case 3:
-				management.insertConferenceBooking(listConferenceBooking);
+				managerSeatRoom.insertConferenceRoom(listConferenceRooms);
 				break;
 			case 4:
-				management.saveFileConferenceRoom(listConferenceBooking);
+				managerSeatRoom.saveFileConferenceRoom(listConferenceRooms);
 				break;
 			case 5:
-				System.out.println("back !");
+				System.out.println("back to main menu");
 				break;
 			default:
 				System.out.println("choose again");
 				break;
 			}
-		} while (chose2 !=5);
+		} while (chose !=5);
+	}
+	
+	// seat booking 
+	public static  void seatBooking() {
+		int chose = 0;
+		do {
+			System.out.println("==== Seat Booking ===");
+			System.out.println("function 1: read file seatBooking.txt");
+			System.out.println("function 2: view Seat Booking");
+			System.out.println("function 3: insert Seat Booking");
+			System.out.println("function 4: save file seatBooking.txt");
+			System.out.println("function 5: back to main menu!");
+				
+			try {
+				System.out.println("=> choose function ");
+				chose = Integer.parseInt(sca.nextLine());
+			} catch (Exception e) {
+				System.err.println("you must enter the number");
+			}
+			
+			switch (chose) {
+			case 1:
+				booking.readFileSeatBooking(listSeatBooking);
+				break;
+			case 2: 		
+				booking.viewSeatBooking(listSeatBooking);
+				break;
+			case 3:
+				booking.insertSeatBooking(listSeatBooking);
+				break;
+			case 4:
+				booking.saveFileSeatBooking(listSeatBooking);
+				break;
+			case 5:
+				System.out.println("back to main menu");
+				break;
+			default:
+				System.out.println("choose again");
+				break;
+			}
+		} while (chose !=5);
+	}
+	
+	// room booking 
+	public static  void roomBooking() {
+		int chose = 0;
+		do {
+			System.out.println("==== Room Booking ===");
+			System.out.println("function 1: read file conferenceroomBooking.txt");
+			System.out.println("function 2: view Room Booking");
+			System.out.println("function 3: insert Room Booking");
+			System.out.println("function 4: save file conferenceroomBooking.txt");
+			System.out.println("function 5: back to main menu!");
+				
+			try {
+				System.out.println("=> choose function ");
+				chose = Integer.parseInt(sca.nextLine());
+			} catch (Exception e) {
+				System.err.println("you must enter the number");
+			}
+			
+			switch (chose) {
+			case 1:
+				booking.readFileConferenceBooking(listConferenceBooking);
+				break;
+			case 2: 		
+				booking.viewConferenceBooking(listConferenceBooking);
+				break;
+			case 3:
+				booking.insertConferenceBooking(listConferenceBooking);
+				break;
+			case 4:
+				booking.saveFileConferenceBooking(listConferenceBooking);
+				break;
+			case 5:
+				System.out.println("back to main menu");
+				break;
+			default:
+				System.out.println("choose again");
+				break;
+			}
+		} while (chose !=5);
 	}
 	
 	public static void main(String[] args) {
@@ -187,9 +244,11 @@ public class Main {
 			do {
 				System.out.println("====**** Main menu ****====");
 				System.out.println("Function 1: Account Management");
-				System.out.println("Function 2: Management Seat - Room");
-				System.out.println("Function 3: Booking");
-				System.out.println("Function 4: Exit !");
+				System.out.println("Function 2: Seat Management");
+				System.out.println("Function 3: Room Management");
+				System.out.println("Function 4: Seat Booking");
+				System.out.println("Function 5: Room Booking");
+				System.out.println("Function 6: Exit !");
 				
 				try {
 					System.out.println("=> choose Menu ");
@@ -203,12 +262,18 @@ public class Main {
 					userManager();
 					break;
 				case 2: 		
-					managerSeatRoom();
+					managerSeat();
 					break;
 				case 3:
-					
+					managerRoom();
 					break;
 				case 4:
+					seatBooking();
+					break;
+				case 5:
+					roomBooking();
+					break;
+				case 6:
 					System.out.println("Exit !");
 					break;
 				default:
@@ -216,7 +281,7 @@ public class Main {
 					break;
 				}
 				
-			} while (chooseMenu !=4);
+			} while (chooseMenu != 6);
 		}
 	
 	}
