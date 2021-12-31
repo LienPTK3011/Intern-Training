@@ -5,10 +5,12 @@
  */
 package btl01;
 
+import btl01.file.Seatio;
+import btl01.file.Roomio;
 import btl01.name.User;
 import btl01.name.Seat;
 import btl01.name.ConferenceRoom;
-import static btl01.Login.readFile;
+import static btl01.file.Login.readFile;
 import java.util.ArrayList;
 import java.util.Scanner;
 

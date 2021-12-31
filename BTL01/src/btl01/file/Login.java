@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package btl01;
+package btl01.file;
 
 import btl01.name.User;
 import java.io.BufferedReader;
