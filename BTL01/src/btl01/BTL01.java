@@ -58,7 +58,7 @@ public class BTL01 {
 	private static void readSeat() {
 		listSeat = Seatio.read("C:\\Users\\Asus\\Documents\\NetBeansProjects\\BTL01\\src\\btl01\\seat.txt");
 	}
-        //read file user.txt
+        //read file room.txt
 	private static void readRoom() {
 		listRoom = Roomio.readFile("C:\\Users\\Asus\\Documents\\NetBeansProjects\\BTL01\\src\\btl01\\seat.txt");
 	}
