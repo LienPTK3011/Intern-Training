@@ -9,9 +9,6 @@ package com.mycompany.Java8;
  * @author Dang
  */
     @FunctionalInterface
-public interface Movie {
-	
+public interface Movie {	
 String Details(String msg);
-
-
     }

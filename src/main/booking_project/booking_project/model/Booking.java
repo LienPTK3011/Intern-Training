@@ -1,15 +1,16 @@
-package booking_project;
+package booking_project.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Booking {
+	//declare
 	private int id;
 	private LocalDate day;
 	private LocalTime startTime;
 	private LocalTime endTime;
 	private double price;
-	
+	//constructer
 	public Booking(int id, LocalDate day, LocalTime startTime, LocalTime endTime, double price) {
 		super();
 		this.id = id;
@@ -18,7 +19,7 @@ public class Booking {
 		this.endTime = endTime;
 		this.price = price;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -58,10 +59,9 @@ public class Booking {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
-	protected void calculatePrice() {
+//method calculating price
+	public void calculatePrice() {
 		System.out.println("Calculate price for booking");
 	}
-	
-	
+
 }

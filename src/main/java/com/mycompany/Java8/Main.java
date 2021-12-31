@@ -33,11 +33,6 @@ public class Main {
         System.out.println(movie2.Details("Horror Movie"));
         
         //Ex 5 
-        
-        
-        
-                
-        
-       
+   
     }
 }
