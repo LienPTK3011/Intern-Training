@@ -97,25 +97,20 @@ public class ConferenceBooking {
 	@Override
 	public String toString() {
 		return "ConferenceBooking [id=" + id + ", day=" + day + ", startTime="
-				+ startTime + ", endTime=" + endTime + ", roomID=" + roomID + ", price=" + calculatePrice() + "]";
+				+ startTime + ", endTime=" + endTime + ", roomID=" + roomID + ", price=" + price + "]";
 	}
 
-
-	public void outputConferenceBooking() {
-		System.out.println(toString());
-	}
 	
 
-	
-	public float calculatePrice() {
-		Duration duration = Duration.between(startTime, endTime);
+	// method calculate price
+	public float calculatePrice(float pricePerHour, LocalTime start, LocalTime end) {
+		Duration duration = Duration.between(start, end);
 		long hours = duration.toHours();
 		long minutes = duration.toMinutes() - hours * 60;
-		double payMoney = (hours + (minutes * 1.0 / 60)) * this.getPrice();
-		return (float) Math.round(payMoney * 100) / 100;
+		float payMoney = (float) ((hours + (minutes * 1.0 / 60)) * pricePerHour);
 		
+		return payMoney;
+
 	}
-	
-	
 	
 }

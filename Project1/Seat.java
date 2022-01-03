@@ -60,9 +60,7 @@ public class Seat {
 		return "Seat [id=" + id + ", seatCode=" + seatCode + ", pricePerHour=" + pricePerHour + ", note=" + note + "]";
 	}
 
-	public void outputSeat() {
-		System.out.println(toString());
-	}
+
 	
 	public void inputSeat() {
 		Scanner sca = new Scanner(System.in);

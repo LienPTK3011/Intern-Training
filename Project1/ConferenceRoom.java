@@ -61,9 +61,6 @@ public class ConferenceRoom {
 				+ ", note=" + note + "]";
 	}
 
-	public void outputConferenceRoom() {
-		System.out.println(toString());
-	}
 	
 	public void inputConferenceRoom() {
 		Scanner sca = new Scanner(System.in);

@@ -47,9 +47,7 @@ public class User {
 	
 	
 	
-	public void outputUser() {
-		System.out.println(toString());
-	}
+
 	
 	public void inputUser() {
 		Scanner sca = new Scanner(System.in);

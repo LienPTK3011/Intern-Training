@@ -12,19 +12,25 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.DoubleSummaryStatistics;
+import java.util.LongSummaryStatistics;
+import java.util.Scanner;
 
 public class ManageBooking {
 	
-
+	static Scanner sca = new Scanner(System.in);
 	
 	// date convert
 	DateTimeFormatter dtd = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
+	// convert string to datetime
 	public LocalDate stringToDate(String s) {
 		LocalDate d = LocalDate.parse(s,dtd);
 		return d;
 	}
 	
+	// convert datetime to string
 	public String dateToString(LocalDate d) {
 		return dtd.format(d);
 	}
@@ -32,14 +38,18 @@ public class ManageBooking {
 	
 	// time convert
 	DateTimeFormatter dtt = DateTimeFormatter.ofPattern("HH:mm");
+	
+	// convert string to datetime
 	public LocalTime stringToTime(String s) {
 		LocalTime t = LocalTime.parse(s, dtt);
 		return t;
 	}
 	
+	// convert datetime to string
 	public String timeToString(LocalTime t) {
 		return dtt.format(t);
 	}
+	
 	
 	// read file seatBooking.txt
 	public void readFileSeatBooking(ArrayList<SeatBooking> listSeatBooking) {
@@ -115,8 +125,7 @@ public class ManageBooking {
 							timeToString(seatBooking.getStartTime()) + ";" + 
 							timeToString(seatBooking.getEndTime()) + ";" + 
 							seatBooking.getSeatID() + ";" + 
-							seatBooking.getPrice() + ";" + 
-							seatBooking.calculatePrice();
+							seatBooking.getPrice();
 				bw.write(line);
 				bw.newLine();
 			}
@@ -140,8 +149,7 @@ public class ManageBooking {
 						timeToString(conferenceBooking.getStartTime()) + ";" + 
 						timeToString(conferenceBooking.getEndTime()) + ";" + 
 						conferenceBooking.getRoomID() + ";" + 
-						conferenceBooking.getPrice() + ";" + 
-						conferenceBooking.calculatePrice();
+						conferenceBooking.getPrice();
 				bw.write(line);
 				bw.newLine();
 			}
@@ -154,26 +162,158 @@ public class ManageBooking {
 	}
 	
 	// insert seat booking
-	public void insertSeatBooking(ArrayList<SeatBooking> listSeatBooking) {
+	public void insertSeatBooking(ArrayList<SeatBooking> listSeatBooking, ArrayList<Seat> listSeat) {
+		System.out.println("Enter the seatID you want to booking");
+		SeatBooking seatBooking = new SeatBooking();
+		String seatId ;
+		boolean check = false;
+		float pricePerHour = 0;
 		
+		// check existed seat id
+		while (true) {
+			seatId = sca.nextLine();
+			for (int i = 0; i < listSeat.size(); i++) {
+				if(listSeat.get(i).getSeatCode().equals(seatId)) {
+					pricePerHour = listSeat.get(i).getPricePerHour();
+					check = true;
+					
+				}
+			}
+			if(check == true) {
+				System.out.println("seat ID matches! Please continue to enter information");
+				break;
+			}else {
+				System.err.println("seat id does not exist = " + seatId + " Please try again");
+			}	
+		}
+		
+		System.out.println("Enter id ");
+		String id = sca.nextLine();
+		System.out.println("Enter date: (dd/MM/yyyy)");
+		String day = sca.nextLine();
+		LocalDate date = stringToDate(day);
+		
+		System.out.println("Enter start time");
+		String startTime = sca.nextLine();
+		LocalTime start = stringToTime(startTime);
+			
+		System.out.println("Enter end time");
+		String endTime = sca.nextLine();
+		LocalTime end = stringToTime(endTime);
+		
+		// Check overlapping booking time
+		boolean duplicate = false;
+			
+		for (int i = 0; i < listSeatBooking.size(); i++) {
+			if(listSeatBooking.get(i).getDay().equals(date)) {
+				if( (listSeatBooking.get(i).getStartTime().isBefore(end)) && (listSeatBooking.get(i).getEndTime().isAfter(start))  ) {
+					duplicate = true;
+					break;
+				}
+			}	
+		}
+		if(duplicate == true) {
+			System.err.println("Duplicate time! Please try again");
+				
+		}else {
+			System.out.println("Time is suitable");
+				
+		}
+		
+		// price of seat booking  = (End time - Start time) * seatPricePerHour
+		Float price = seatBooking.calculatePrice(pricePerHour, start, end);
+		
+		if(duplicate== false) {
+			SeatBooking seatBooking1 = new SeatBooking(id, date, start, end, seatId, price);
+			listSeatBooking.add(seatBooking1);
+		}
+
 	}
 	
 	// insert Conference room Booking
-	public void insertConferenceBooking(ArrayList<ConferenceBooking> listConferenceBooking) {
+	public void insertConferenceBooking(ArrayList<ConferenceBooking> listConferenceBooking, ArrayList<ConferenceRoom> listConferenceRooms) {
+		System.out.println("Enter the roomID you want to booking");
+		ConferenceBooking conferenceBooking = new ConferenceBooking();
+		String roomId ;
+		boolean check = false;
+		float pricePerHour = 0;
 		
+		// check existed  room id
+		while (true) {
+			roomId = sca.nextLine();
+			for (int i = 0; i < listConferenceRooms.size(); i++) {
+				if(listConferenceRooms.get(i).getRoomCode().equals(roomId)) {
+					pricePerHour = listConferenceRooms.get(i).getPricePerHour();
+					check = true;
+					
+				}
+			}
+			if(check == true) {
+				System.out.println("room ID matches! Please continue to enter information");
+				break;
+			}else {
+				System.err.println("room id does not exist = " + roomId + " Please try again");
+			}	
+		}
+		
+		System.out.println("Enter id ");
+		String id = sca.nextLine();
+		System.out.println("Enter date: (dd/MM/yyyy)");
+		String day = sca.nextLine();
+		LocalDate date = stringToDate(day);
+		
+		System.out.println("Enter start time");
+		String startTime = sca.nextLine();
+		LocalTime start = stringToTime(startTime);
+			
+		System.out.println("Enter end time");
+		String endTime = sca.nextLine();
+		LocalTime end = stringToTime(endTime);
+		
+		// Check overlapping booking time
+		boolean duplicate = false;
+			
+		for (int i = 0; i < listConferenceBooking.size(); i++) {
+			if(listConferenceBooking.get(i).getDay().equals(date)) {
+				if( (listConferenceBooking.get(i).getStartTime().isBefore(end)) && (listConferenceBooking.get(i).getEndTime().isAfter(start))  ) {
+					duplicate = true;
+					break;
+				}
+			}	
+		}
+		if(duplicate == true) {
+			System.err.println("Duplicate time! Please try again");
+				
+		}else {
+			System.out.println("Time is suitable");
+				
+		}
+		
+		// price of conference room booking  = (End time - Start time) * conferencePricePerHour
+		Float price = conferenceBooking.calculatePrice(pricePerHour, start, end);
+		
+		if(duplicate== false) {
+			ConferenceBooking conferenceBooking1 = new ConferenceBooking(id, date, start, end, roomId, price);
+			listConferenceBooking.add(conferenceBooking1);
+		}
+
 	}
 	
 	// view seat booking 
 	public void viewSeatBooking(ArrayList<SeatBooking> listSeatBooking) {
-		for (SeatBooking seatBooking : listSeatBooking) {
-			System.out.println(seatBooking);
-		}
+		listSeatBooking.stream().forEach(System.out::println);
 	}
 	
 	// view Conference room Booking
 	public void viewConferenceBooking(ArrayList<ConferenceBooking> listConferenceBooking) {
-		for (ConferenceBooking conferenceBooking : listConferenceBooking) {
-			System.out.println(conferenceBooking);
-		}
+		listConferenceBooking.stream().forEach(System.out::println);
+	}
+	
+	// calculate total price for all seat and conference room bookings
+	public void calculateTotalPrice(ArrayList<SeatBooking> listSeatBooking, ArrayList<ConferenceBooking> listConferenceBooking) {
+		float sum1= (float) listSeatBooking.stream().mapToDouble(SeatBooking::getPrice).sum();
+		float sum2= (float) listConferenceBooking.stream().mapToDouble(ConferenceBooking::getPrice).sum();
+		float sumAll = sum1 +sum2;
+		System.out.println("Total price for booking = "+ sumAll);
 	}
 }

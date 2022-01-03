@@ -121,8 +121,6 @@ public class Login {
 	
 	// view usename password
 	public void viewUser(ArrayList<User> listUser) {
-		for (User user : listUser) {
-			user.outputUser();
-		}
+		listUser.stream().forEach(System.out::println);
 	}
 }

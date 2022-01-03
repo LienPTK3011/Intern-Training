@@ -16,7 +16,7 @@ public class ManageSeatRoom {
 	
 	// read file seat.txt
 	public void readFileSeat(ArrayList<Seat> listSeat) {
-		System.out.println("read file seat.txt");
+		
 		try {
 			FileInputStream fis = new FileInputStream("D:\\eclipse-workspace\\THUCTAPBUOI1\\src\\Project1\\seat.txt");
 			InputStreamReader read = new InputStreamReader(fis, StandardCharsets.UTF_8);
@@ -47,7 +47,7 @@ public class ManageSeatRoom {
 	
 	// read file conferenceroom.txt
 	public void readFileConferenceRoom(ArrayList<ConferenceRoom> listConferenceRoom) {
-		System.out.println("read file conferenceroom.txt");
+		
 		try {
 			FileInputStream fis = new FileInputStream("D:\\eclipse-workspace\\THUCTAPBUOI1\\src\\Project1\\conferenceroom.txt");
 			InputStreamReader read = new InputStreamReader(fis, StandardCharsets.UTF_8);
@@ -128,6 +128,7 @@ public class ManageSeatRoom {
 		listSeat.add(seat);
 	}
 	
+
 	// insert Conference room
 	public void insertConferenceRoom(ArrayList<ConferenceRoom> listConferenceRoom) {
 		System.out.println("insert ConferenceBooking");
@@ -139,25 +140,13 @@ public class ManageSeatRoom {
 	
 	// view seat 
 	public void viewSeat(ArrayList<Seat> listSeat) {
-		if(listSeat.isEmpty()) {
-			System.out.println("please choose function 1 first");
-		}else {
-			for (Seat s : listSeat) {
-				s.outputSeat();
-			}
-		}
+		listSeat.stream().forEach(System.out::println);
 
 	}
 		
 	// view conference room
 	public void viewConferenceRoom(ArrayList<ConferenceRoom> listConferenceRoom) {
-		if(listConferenceRoom.isEmpty()) {
-			System.out.println("please choose function 1 first");
-		}else {
-			for (ConferenceRoom s : listConferenceRoom) {
-				s.outputConferenceRoom();
-			}
-		}
+		listConferenceRoom.stream().forEach(System.out::println);
 		
 	}	
 	

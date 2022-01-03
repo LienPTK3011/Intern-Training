@@ -82,22 +82,18 @@ public class SeatBooking  {
 	@Override
 	public String toString() {
 		return "SeatBooking [id=" + id + ", day=" + day + ", startTime=" + startTime
-				+ ", endTime=" + endTime + ", seatID=" + seatID + ", price=" + calculatePrice() + "]";
-	}
-
-	public void outputSeatBooking() {
-		System.out.println(toString());
+				+ ", endTime=" + endTime + ", seatID=" + seatID + ", price=" + price + "]";
 	}
 
 
-	
-	public float calculatePrice() {
-		Duration duration = Duration.between(startTime, endTime);
+	// method calculate price
+	public float calculatePrice(float pricePerHour, LocalTime start, LocalTime end) {
+		Duration duration = Duration.between(start, end);
 		long hours = duration.toHours();
 		long minutes = duration.toMinutes() - hours * 60;
-		double payMoney = (hours + (minutes * 1.0 / 60)) * this.getPrice();
+		float payMoney = (float) ((hours + (minutes * 1.0 / 60)) * pricePerHour);
 		
-		return (float) Math.round(payMoney * 100) / 100;
+		return payMoney;
 
 	}
 	

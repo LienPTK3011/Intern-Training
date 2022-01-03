@@ -73,11 +73,10 @@ public class Main {
 
 		do {
 			System.out.println("==== Seat Management ===");
-			System.out.println("function 1: read file seat.txt");
-			System.out.println("function 2: view seat");
-			System.out.println("function 3: insert seat");
-			System.out.println("function 4: save file seat.txt");
-			System.out.println("function 5: back to main menu!");
+			System.out.println("function 1: view seat");
+			System.out.println("function 2: insert seat");
+			System.out.println("function 3: save file seat.txt");
+			System.out.println("function 4: back to main menu!");
 				
 			try {
 				System.out.println("=> choose function ");
@@ -87,26 +86,23 @@ public class Main {
 			}
 			
 			switch (chose) {
-			case 1:
-				managerSeatRoom.readFileSeat(listSeat);
-				break;
-			case 2: 		
+			case 1: 		
 				managerSeatRoom.viewSeat(listSeat);
 				break;
-			case 3:
+			case 2:
 				managerSeatRoom.insertSeat(listSeat);
 				break;
-			case 4:
+			case 3:
 				managerSeatRoom.saveFileSeat(listSeat);
 				break;
-			case 5:
+			case 4:
 				System.out.println("back to main menu");
 				break;
 			default:
 				System.out.println("choose again");
 				break;
 			}
-		} while (chose !=5);
+		} while (chose !=4);
 	}
 	
 	
@@ -116,11 +112,10 @@ public class Main {
 		
 		do {
 			System.out.println("==== Room Management ===");
-			System.out.println("function 1: read file conferenceroom.txt");
-			System.out.println("function 2: view Conference Room");
-			System.out.println("function 3: insert Conference Room");
-			System.out.println("function 4: save file conferenceroom.txt");
-			System.out.println("function 5: back to main menu!");
+			System.out.println("function 1: view Conference Room");
+			System.out.println("function 2: insert Conference Room");
+			System.out.println("function 3: save file conferenceroom.txt");
+			System.out.println("function 4: back to main menu!");
 				
 			try {
 				System.out.println("=> choose function ");
@@ -130,26 +125,23 @@ public class Main {
 			}
 			
 			switch (chose) {
-			case 1:
-				managerSeatRoom.readFileConferenceRoom(listConferenceRooms);
-				break;
-			case 2: 		
+			case 1: 		
 				managerSeatRoom.viewConferenceRoom(listConferenceRooms);
 				break;
-			case 3:
+			case 2:
 				managerSeatRoom.insertConferenceRoom(listConferenceRooms);
 				break;
-			case 4:
+			case 3:
 				managerSeatRoom.saveFileConferenceRoom(listConferenceRooms);
 				break;
-			case 5:
+			case 4:
 				System.out.println("back to main menu");
 				break;
 			default:
 				System.out.println("choose again");
 				break;
 			}
-		} while (chose !=5);
+		} while (chose !=4);
 	}
 	
 	// seat booking 
@@ -157,11 +149,10 @@ public class Main {
 		int chose = 0;
 		do {
 			System.out.println("==== Seat Booking ===");
-			System.out.println("function 1: read file seatBooking.txt");
-			System.out.println("function 2: view Seat Booking");
-			System.out.println("function 3: insert Seat Booking");
-			System.out.println("function 4: save file seatBooking.txt");
-			System.out.println("function 5: back to main menu!");
+			System.out.println("function 1: view Seat Booking");
+			System.out.println("function 2: insert Seat Booking");
+			System.out.println("function 3: save file seatBooking.txt");
+			System.out.println("function 4: back to main menu!");
 				
 			try {
 				System.out.println("=> choose function ");
@@ -171,26 +162,23 @@ public class Main {
 			}
 			
 			switch (chose) {
-			case 1:
-				booking.readFileSeatBooking(listSeatBooking);
-				break;
-			case 2: 		
+			case 1: 		
 				booking.viewSeatBooking(listSeatBooking);
 				break;
-			case 3:
-				booking.insertSeatBooking(listSeatBooking);
+			case 2:
+				booking.insertSeatBooking(listSeatBooking, listSeat);
 				break;
-			case 4:
+			case 3:
 				booking.saveFileSeatBooking(listSeatBooking);
 				break;
-			case 5:
+			case 4:
 				System.out.println("back to main menu");
 				break;
 			default:
 				System.out.println("choose again");
 				break;
 			}
-		} while (chose !=5);
+		} while (chose !=4);
 	}
 	
 	// room booking 
@@ -198,11 +186,10 @@ public class Main {
 		int chose = 0;
 		do {
 			System.out.println("==== Room Booking ===");
-			System.out.println("function 1: read file conferenceroomBooking.txt");
-			System.out.println("function 2: view Room Booking");
-			System.out.println("function 3: insert Room Booking");
-			System.out.println("function 4: save file conferenceroomBooking.txt");
-			System.out.println("function 5: back to main menu!");
+			System.out.println("function 1: view Room Booking");
+			System.out.println("function 2: insert Room Booking");
+			System.out.println("function 3: save file conferenceroomBooking.txt");
+			System.out.println("function 4: back to main menu!");
 				
 			try {
 				System.out.println("=> choose function ");
@@ -212,30 +199,34 @@ public class Main {
 			}
 			
 			switch (chose) {
-			case 1:
-				booking.readFileConferenceBooking(listConferenceBooking);
-				break;
-			case 2: 		
+			case 1: 		
 				booking.viewConferenceBooking(listConferenceBooking);
 				break;
-			case 3:
-				booking.insertConferenceBooking(listConferenceBooking);
+			case 2:
+				booking.insertConferenceBooking(listConferenceBooking, listConferenceRooms);
 				break;
-			case 4:
+			case 3:
 				booking.saveFileConferenceBooking(listConferenceBooking);
 				break;
-			case 5:
+			case 4:
 				System.out.println("back to main menu");
 				break;
 			default:
 				System.out.println("choose again");
 				break;
 			}
-		} while (chose !=5);
+		} while (chose !=4);
 	}
 	
 	public static void main(String[] args) {
 		login.readFileUser(listUser);
+		
+		managerSeatRoom.readFileSeat(listSeat);
+		managerSeatRoom.readFileConferenceRoom(listConferenceRooms);
+		
+		booking.readFileSeatBooking(listSeatBooking);
+		booking.readFileConferenceBooking(listConferenceBooking);
+		
 		if(login.checkLogin(listUser)) {
 
 			int chooseMenu = 0;
@@ -246,7 +237,8 @@ public class Main {
 				System.out.println("Function 3: Room Management");
 				System.out.println("Function 4: Seat Booking");
 				System.out.println("Function 5: Room Booking");
-				System.out.println("Function 6: Exit !");
+				System.out.println("Function 6: Total price for all seat and conference room bookings");
+				System.out.println("Function 7: Exit !");
 				
 				try {
 					System.out.println("=> choose Menu ");
@@ -272,6 +264,9 @@ public class Main {
 					roomBooking();
 					break;
 				case 6:
+					booking.calculateTotalPrice(listSeatBooking, listConferenceBooking);
+					break;
+				case 7:
 					System.out.println("Exit !");
 					break;
 				default:
@@ -279,7 +274,7 @@ public class Main {
 					break;
 				}
 				
-			} while (chooseMenu != 6);
+			} while (chooseMenu != 7);
 		}
 	
 	}
