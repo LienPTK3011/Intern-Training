@@ -247,6 +247,7 @@ public class Main {
 							System.out.println("Time: " + roomBooking.getStartTime() + " to " + roomBooking.getEndTime());
 							System.out.println("Price per hour: " + roomBooking.getPrice()+"$");
 							System.out.println("You have to pay: " + roomBooking.calculatePrice() + "$");
+							System.out.println("Countinue Booking ? ");
 
 							listRoomBooking.add(roomBooking);
 							IoRoomBooking.saveFile(listRoomBooking, "E:\\Java\\Training\\Intern-Training\\src\\main\\booking_project\\booking_project\\data\\room_booking.txt");
@@ -326,6 +327,7 @@ public class Main {
 							System.out.println("Time: " + seatBooking.getStartTime() + " to " + seatBooking.getEndTime());
 							System.out.println("Price per hour: " + seatBooking.getPrice()+"$");
 							System.out.println("You have to pay: " + seatBooking.calculatePrice() + "$");
+							System.out.println("Countinue Booking ? ");
 							listSeatBooking.add(seatBooking);
 							IoSeatBooking.saveFile(listSeatBooking, "E:\\Java\\Training\\Intern-Training\\src\\main\\booking_project\\booking_project\\data\\seat_booking.txt");
 							break;
