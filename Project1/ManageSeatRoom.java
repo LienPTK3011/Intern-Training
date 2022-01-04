@@ -119,23 +119,84 @@ public class ManageSeatRoom {
 		}
 	}
 	
-	// insert seat 
+	
+	// insert seat
 	public void insertSeat(ArrayList<Seat> listSeat) {
 		System.out.println("insert SeatBooking");
 		Scanner sca = new Scanner(System.in);
-		Seat seat = new Seat();
-		seat.inputSeat();
+		
+		System.out.println("Enter ID seat");
+		String id = sca.nextLine();
+
+		System.out.println("Enter Seat code");
+		String seatCode;
+		
+		// check seat code duplicate
+		while (true) {
+			seatCode = sca.nextLine();
+			boolean check = false;
+			for (int i = 0; i < listSeat.size(); i++) {
+				if(listSeat.get(i).getSeatCode().equalsIgnoreCase(seatCode)) {
+					check = true;
+					break;
+				}
+			}
+			if(check == false ) {
+				break;
+			}else {
+				System.err.println("Seat code duplicate! Please try again");
+			}
+		}
+		
+		System.out.println("Enter price per hour");
+		Float pricePerHour = Float.parseFloat(sca.nextLine());
+		System.out.println("Enter note");
+		String note = sca.nextLine();
+		
+		Seat seat = new Seat(id, seatCode, pricePerHour, note);
+		
 		listSeat.add(seat);
+		
 	}
-	
+
 
 	// insert Conference room
 	public void insertConferenceRoom(ArrayList<ConferenceRoom> listConferenceRoom) {
 		System.out.println("insert ConferenceBooking");
 		Scanner sca = new Scanner(System.in);
-		ConferenceRoom s = new ConferenceRoom();
-		s.inputConferenceRoom();
-		listConferenceRoom.add(s);
+		
+		System.out.println("Enter ID Conference room");
+		String id = sca.nextLine();
+		
+		System.out.println("Enter Room code");
+		String roomCode ;
+		
+		// check room code duplicate
+		while (true) {
+			roomCode = sca.nextLine();
+			boolean check = false;
+			for (int i = 0; i < listConferenceRoom.size(); i++) {
+				if(listConferenceRoom.get(i).getRoomCode().equalsIgnoreCase(roomCode)) {
+					check = true;
+					break;
+				}
+			}
+			if(check == false ) {
+				break;
+			}else {
+				System.err.println("room code duplicate! Please try again");
+			}
+		}
+		
+		System.out.println("Enter price per hour");
+		Float pricePerHour = Float.parseFloat(sca.nextLine());
+		
+		System.out.println("Enter note");
+		String note = sca.nextLine();
+		
+		ConferenceRoom conferenceRoom = new ConferenceRoom(id, roomCode, pricePerHour, note);
+		
+		listConferenceRoom.add(conferenceRoom);
 	}
 	
 	// view seat 

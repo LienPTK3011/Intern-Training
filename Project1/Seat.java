@@ -60,19 +60,5 @@ public class Seat {
 		return "Seat [id=" + id + ", seatCode=" + seatCode + ", pricePerHour=" + pricePerHour + ", note=" + note + "]";
 	}
 
-
-	
-	public void inputSeat() {
-		Scanner sca = new Scanner(System.in);
-		System.out.println("Enter ID seat");
-		id = sca.nextLine();
-		System.out.println("Enter Seat code");
-		seatCode = sca.nextLine();
-		System.out.println("Enter price per hour");
-		pricePerHour = Float.parseFloat(sca.nextLine());
-		System.out.println("Enter note");
-		note = sca.nextLine();
-	}
-	
 	
 }

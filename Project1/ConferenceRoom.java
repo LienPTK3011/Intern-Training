@@ -61,16 +61,5 @@ public class ConferenceRoom {
 				+ ", note=" + note + "]";
 	}
 
-	
-	public void inputConferenceRoom() {
-		Scanner sca = new Scanner(System.in);
-		System.out.println("Enter ID Conference room");
-		id = sca.nextLine();
-		System.out.println("Enter Room code");
-		roomCode = sca.nextLine();
-		System.out.println("Enter price per hour");
-		pricePerHour = Float.parseFloat(sca.nextLine());
-		System.out.println("Enter note");
-		note = sca.nextLine();
-	}
+
 }
