@@ -1,0 +1,6 @@
+1;Nguyễn Văn Nam;Web;java
+2;Tô Văn Tuấn;Web;php
+3;Nguyễn Quang Quân;Mobile;flutter
+4;Nguyễn Việt Anh;Web;javascript
+5;Nguyễn Viết Thành Trung;AI;python
+6;Nguyễn Hoàng Đức;Mobile;java
