@@ -23,10 +23,15 @@ public class Main {
 			System.out.println("function 2: insert information personnel");
 			System.out.println("function 3: update information personnel");
 			System.out.println("function 4: delete information personnel");
-			System.out.println("function 5: ");
-			System.out.println("function 6: ");
+			System.out.println("function 5: show personnel by department");
+			System.out.println("function 6: show personnel by skill");
 			System.out.println("choose function");
-			choose = Integer.parseInt(sca.nextLine());
+			try {
+				choose = Integer.parseInt(sca.nextLine());
+			} catch (Exception e) {
+				System.out.println(" you must enter number");
+			}
+			
 			switch (choose) {
 			case 1: 
 				view.outputInformation(listPersonnel);
@@ -41,15 +46,14 @@ public class Main {
 				controller.deletePersonnel(listPersonnel);
 				break;
 			case 5: 
-				
+				controller.viewPersonnelByDepartment(listPersonnel);
 				break;
 			case 6: 
-				
+				controller.viewPersonnelBySkill(listPersonnel);
 				break;
 			case 7: 
-				
+				System.out.println("Exit!");
 				break;
-		
 			default:
 				System.out.println("choose again");
 				break;
