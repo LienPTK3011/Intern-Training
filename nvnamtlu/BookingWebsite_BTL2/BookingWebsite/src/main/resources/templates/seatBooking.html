@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+	<h1 style="text-align: center;">SEAT BOOKING</h1>  
+	<h3 style="color: red; text-align: center;" th:utext="${bookingFailed}"></h3> 
+	<div class="container main-content form">
+        <div class="row">
+          <form action="#" th:action="@{/user/seatBooking/bookingDone}" th:object="${seat_booking}"
+		    method="POST" novalidate="novalidate">
+		    <input type="hidden" th:field="*{id}" />
+		    <input type="hidden" th:field="*{userName}" />
+		    <div class="form-group">
+		        <label>Seat code</label>
+				<select onchange="getID()" id="seatCode" th:field="*{seatCode}">
+	                         <option value=""> -- </option>
+	                         <option th:each="key : ${seatCodes}"
+	                         		 th:value="${key.seatCode}"
+	                                 th:utext="${key.seatCode}">
+	                         </option>
+	             </select>
+		    </div>
+		    <div class="form-group">
+		        <label>Price per hour</label>
+		        <input id="price" type="text" class="form-control" th:field="*{pricePerHour}" />
+		    </div>
+		    <script th:inline="javascript">
+             	var seatCodes = [[${seatCodes}]]
+             	
+             	function chooseSeat(id) {	
+	             	for(var i=0; i<seatCodes.length; i++) {
+						if(id==seatCodes[i].seatCode) {
+							var price = document.getElementById("price");
+							price.value = seatCodes[i].pricePerHour;
+						}
+					}
+				}
+				
+		    	var e = document.getElementById("seatCode");
+				function getID(){
+				  var strID = e.options[e.selectedIndex].value;
+				  console.log(strID);
+				  chooseSeat(strID);
+				}
+					
+             </script>
+		    <div class="form-group">
+		        <label>Date</label>
+		        <input type="date" class="form-control" th:field="*{dayBK}" />
+		    </div>
+		   	<div class="form-group">
+		        <label>Start time (HH:mm)</label>
+		        <input type="time" class="form-control" th:field="*{startTime}" />
+		    </div>
+		    <div class="form-group">
+		        <label>End time (HH:mm)</label>
+		        <input type="time" class="form-control" th:field="*{endTime}" />
+		    </div>
+		    <button type="submit" class="btn btn-primary">Booking</button>
+		</form>
+        </div>
+    </div><!-- /.container -->
+    <footer th:replace="layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title th:utext="${title}">Booking success</title>
+   </head>
+   <body>
+      <h2><b th:utext="${username}"/> has booking success with:</h2><br/>
+      <h3>	Code: <b th:utext="${code}"/></h3><br/>
+      <h3>	Price per hour: <b th:utext="${price}"/></h3><br/>
+      <h3>	Date: <b th:utext="${day}"/></h3><br/>
+      <h3>	From <b th:utext="${ST}"/> to <b th:utext="${ET}"/></h3><br/>
+      <h3>>>> You must to pay <b th:utext="${payment}"></b> $</h3>
+   </body>
+   
+</html>

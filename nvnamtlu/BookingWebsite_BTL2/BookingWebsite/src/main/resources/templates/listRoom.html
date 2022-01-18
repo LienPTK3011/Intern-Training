@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+	<nav th:replace="layout :: header"></nav>
+	<div class="container main-content list">
+		<div th:if="${success}"
+			class="row alert alert-success alert-dismissible">
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+			<span th:text="${success}"></span>
+		</div>
+		<div class="row">
+			<h3 style="color: red;" th:utext="${booked}"></h3>
+			<a th:href="@{/admin/room/create}" class="btn btn-success pull-left">
+				<span class="glyphicon glyphicon-plus"></span> Add new room
+			</a>
+			<form class="form-inline pull-right" action="#"
+				th:action="@{/admin/room/search}" method="GET">
+				<div class="form-group">
+					<input type="text" class="form-control" name="s"
+						placeholder="Type room name..." />
+				</div>
+				<button type="submit" class="btn btn-primary">Search</button>
+			</form>
+		</div>
+		<th:block th:if="${#lists.isEmpty(rooms)}">
+			<h3>No room</h3>
+		</th:block>
+		<th:block th:unless="${#lists.isEmpty(rooms)}">
+			<div class="row">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Room code</th>
+							<th>Price per hour</th>
+							<th>Note</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="info,iterStat : ${rooms}">
+							<td th:text="${iterStat.count}"></td>
+							<td th:text="${info.roomCode}"></td>
+							<td th:text="${info.pricePerHour}"></td>
+							<td th:text="${info.note}"></td>
+							<td><a th:href="@{/admin/room/{id}/edit(id=${info.id})}"><span
+									class="glyphicon glyphicon-pencil"></span></a></td>
+							<td><a th:href="@{/admin/room/{id}/delete(id=${info.id})}"><span
+									class="glyphicon glyphicon-trash"></span></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</th:block>
+	</div>
+	<!-- /.container -->
+	<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
