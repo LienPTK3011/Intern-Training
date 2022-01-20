@@ -8,12 +8,12 @@ package com.mycompany.Java8.Functional_Interface_Lambda_Expression_Method_Refere
  *
  * @author Dang
  */
-public class Cartoon implements Movie{
+public class Cartoon implements Movie {
 
-	String cartoon = "Here is cartoon movie";
 	@Override
-	public void detail(String cartoon) {
-		System.out.println(cartoon);
+	public void detail(String s) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

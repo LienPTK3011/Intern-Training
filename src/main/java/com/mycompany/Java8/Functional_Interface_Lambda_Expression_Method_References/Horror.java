@@ -10,10 +10,10 @@ package com.mycompany.Java8.Functional_Interface_Lambda_Expression_Method_Refere
  */
 public class Horror implements Movie{
 
-	String horror = "Here is horror movie";
 	@Override
-	public void detail(String horror) {
-		System.out.println(horror);
+	public void detail(String s) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

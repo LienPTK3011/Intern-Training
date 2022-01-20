@@ -8,12 +8,17 @@ package com.mycompany.Java8.Functional_Interface_Lambda_Expression_Method_Refere
  *
  * @author Dang
  */
-public class MethodReferences {
+public class Main {
 
 	public static void main(String[] args) {
-		Movie action = System.out::println;
-		action.detail("Action movie is the best");
+		
+		//lambda expression
+		Movie mv1 = (s)-> System.out.println(s);
+		mv1.detail("detail_lambda expression");
+		
+		//method reference
+		Movie mv2 = System.out::println;
+		mv2.detail("detail_method reference");
 	}
 
-} 
-
+}

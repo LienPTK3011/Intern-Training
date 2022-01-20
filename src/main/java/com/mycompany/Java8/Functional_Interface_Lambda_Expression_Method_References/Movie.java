@@ -8,7 +8,8 @@ package com.mycompany.Java8.Functional_Interface_Lambda_Expression_Method_Refere
  *
  * @author Dang
  */
-    @FunctionalInterface
-public interface Movie {	
-String detail(String str);
-    }
+
+@FunctionalInterface
+public interface Movie {
+	void detail(String s);
+}
