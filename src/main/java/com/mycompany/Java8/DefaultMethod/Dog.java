@@ -4,11 +4,13 @@
  */
 package com.mycompany.Java8;
 
+import com.mycompany.Java8.DefaultMethod.Animal;
+
 /**
  *
  * @author Dang
  */
-public class Cat implements Animal {
+public class Dog implements Animal {
 
     @Override
     public void Eat() {
@@ -23,6 +25,6 @@ public class Cat implements Animal {
     @Override
     public void Run()
     {
-        System.out.println("Cats run by 4 legs");
+        System.out.println("Dogs run by 4 legs"); 
     }
 }

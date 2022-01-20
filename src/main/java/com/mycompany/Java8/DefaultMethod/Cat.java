@@ -4,11 +4,13 @@
  */
 package com.mycompany.Java8;
 
+import com.mycompany.Java8.DefaultMethod.Animal;
+
 /**
  *
  * @author Dang
  */
-public class Fish implements Animal {
+public class Cat implements Animal {
 
     @Override
     public void Eat() {
@@ -20,5 +22,9 @@ public class Fish implements Animal {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    
+    @Override
+    public void Run()
+    {
+        System.out.println("Cats run by 4 legs");
+    }
 }

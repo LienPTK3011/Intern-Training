@@ -4,16 +4,23 @@
  */
 package com.mycompany.Java8;
 
+import com.mycompany.Java8.DefaultMethod.Animal;
+
 /**
  *
  * @author Dang
  */
-public class Horror implements Movie {
+public class Fish implements Animal {
 
     @Override
-    public String Details(String msg) {
+    public void Eat() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void Breath() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     
 }
