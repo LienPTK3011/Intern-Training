@@ -62,7 +62,7 @@ public class Student extends Person {
         averagepoint =Float.parseFloat(sc.nextLine());
         System.out.println("Enter Email ");
         email = sc.nextLine();
-    }
+    }   
     
     @Override
     public void showInformation() {

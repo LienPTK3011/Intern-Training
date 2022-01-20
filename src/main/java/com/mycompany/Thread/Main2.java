@@ -8,23 +8,34 @@ package com.mycompany.Thread;
  *
  * @author Dang
  */
-public class Main1 extends Thread {
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
+public class Main2 {
 	public static void main(String[] args) {
-		Main1 Thread3a = new Main1();
-		Thread3a.start();
+		ExecutorService es = Executors.newSingleThreadExecutor();
+		for(int i=0; i<30; i++) {
+			es.execute(new PrintBeepB());
+		}
+		es.shutdown(); 
 	}
-	
-	//Tạo 1 thread mà sẽ print ra tiếng “Beep” sau 5 giây.
+}
+
+class PrintBeepB implements Runnable {
+
+	public PrintBeepB() {
+		super();
+	}
+
 	@Override
 	public void run() {
-		System.out.println("waiting in 5 seconds ...");
 		try {
+			System.out.println("waiting in 5 seconds ...");
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		System.out.println("Beep");
 	}
-
+	
 }

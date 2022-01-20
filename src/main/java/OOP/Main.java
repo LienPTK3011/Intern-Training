@@ -6,6 +6,8 @@ package OOP;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -31,72 +33,115 @@ public class Main {
             switch(choose){
                 
                 case 1:
-                  insertStudent(listStudent);
+                c c0 = new c();
+		c0.them(listStudent);
                     break;
                 case 2:
-                   displayStudent(listStudent);
+                c c1 = new c();
+		c1.xem(listStudent);
                     break;
                 case 3:
-                  editStudent(listStudent);
+                c c2 = new c();
+		c2.sua(listStudent);
                     break;
                 case 4:
-                   deleteStudent(listStudent);
+                c c3 = new c();
+		c3.xoa(listStudent);
                     break;
-                case 5:
+                case 5: 
+                    asc(listStudent);
+		    break;
+		case 6: 
+                    desc(listStudent);
+                    break;
+		case 7: 
+                    checkschoolarship(listStudent);
+                    break;
+                case 8:
                     System.out.println("Exit");
                     break;
                
             }   
-        } while (choose != 5);
+        } while (choose != 8);
     
         }
-    //Thêm thông tin SV 
-    private static void insertStudent(ArrayList<Student> listStudent) {
-        Student student = new Student();
-        student.inputInformation();
-        listStudent.add(student);         
-    }
+    //Thêm thông tin SV 1
+    static void desc(ArrayList<Student> listStudent) {
+		if(listStudent.isEmpty()) {
+			System.out.println("Chưa có sinh viên nào. Vui lòng thêm sinh viên");
+		}else {
+			Collections.sort(listStudent, new Comparator<Student>() {
+				@Override
+				public int compare(Student s1, Student s2) {
+					if(s1.getAveragepoint()> s2.getAveragepoint()) {
+						return -1;
+					}
+					return 1;
+				}	
+			});
+			System.out.println("Danh sách sinh viên theo thứ tự điểm giảm dần là");
+			for (int i = 0; i < listStudent.size(); i++) {
+				listStudent.get(i).showInformation();
+			}
+		}
+	}
+    
+ static void asc(ArrayList<Student> listStudent) {
+		if(listStudent.isEmpty()) {
+			System.out.println("chưa có sinh viên nào. Vui lòng thêm sinh viên");
+		}else {
+			Collections.sort(listStudent, new Comparator<Student>() {
+				@Override
+				public int compare(Student s1, Student s2) {
+					if(s1.getAveragepoint() > s2.getAveragepoint()) {
+						return 1;
+					}
+					return -1;
+				}	
+			});
+			System.out.println("Danh sách sinh viên theo thứ tự điểm tăng dần là");
+			for (int i = 0; i < listStudent.size(); i++) {
+				listStudent.get(i).showInformation();
+			}
+		}
+		
+	}
+ 
+ static void checkschoolarship(ArrayList<Student> listStudent) {
+		System.out.println("Nhập mã sinh viên cần kiểm tra");
+		Scanner sca = new Scanner(System.in);
+		String timkiem = sca.nextLine();  
+		int dem = 0;		
+		
+		for (Student student : listStudent) {
+			if(student.getStudentID().equals(timkiem)) {
+				student.showInformation();
+				if(student.getAveragepoint()>8.0) {
+					System.out.println("Bạn đc học bổng");
+				}else {
+					System.out.println(" Cần cố gắng hơn");
+				}
+				dem++;
+				break;
+			}
+		}
+		if(dem==0) {
+			System.out.println("không có sinh viên nào có MaSV trùng khớp! ");
+		}
+	}
     
     
-    //Hiển thị
-    private static void displayStudent(ArrayList<Student> listStudent) {
-       
-        for (int i = 0; i < listStudent.size(); i++) {
-            listStudent.get(i).showInformation();
-       
-        }
-    }
-    //Sửa
-    private static void editStudent(ArrayList<Student> listStudent) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Sua Thong Tin Sinh Vien: ");
-        System.out.println("Nhap MSV can sua");
-        String sua = sc.nextLine();
-        for (int i = 0; i <listStudent.size(); i++) {
-            if(listStudent.get(i).getStudentID().equals(sua)){
-             
-                listStudent.get(i).showInformation();
-                listStudent.remove(i);
-                Student st = new Student();
-                st.inputInformation();
-                listStudent.add(st);
-            }
-        }
-    }
     
-    //Xóa
-    private static void deleteStudent(ArrayList<Student> listStudent) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Xoa Thong Tin Sinh Vien: ");
-        System.out.println("Nhap MSV can xoa");
-        String xoa = sc.nextLine();
-        for (int j = 0; j <listStudent.size(); j++) {
-            if(listStudent.get(j).getStudentID().equals(xoa)){
-             
-                listStudent.get(j).showInformation();
-                listStudent.remove(j);             
-            }         
-        }
-    }    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
