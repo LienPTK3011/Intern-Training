@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div>
+		<h2>Room</h2>
+		<tr>
+			<div align="left">
+				<h3>
+					<a th:href="@{'/room/addroom'}">Add new</a>
+			</div>
+		</tr>
+
+		<div class="col-sm-8" align="center">
+			<div class="panel-body" align="center">
+
+
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th>ID</th>
+							<th>Room code</th>
+							<th>Price per hour</th>
+							<th>Note</th>
+							<th>edit</th>
+							<th>delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="room : ${listroom}">
+							<td th:text="${room.id}">ID</td>
+							<td th:text="${room.roomcode}">Room Code</td>
+							<td th:text="${room.priceperhour}">Price per hour</td>
+							<td th:text="${room.note}">Note</td>
+
+							<td><a th:href="@{'/room/edit/' + ${room.id}}">Edit</a></td>
+							<td><a th:href="@{'/room/delete/' + ${room.id}}">Delete</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		</tr>
+
+		</tbody>
+		</table>
+		<div>
+			<a href="http://localhost:9040">Back</a>
+</body>
+</html>

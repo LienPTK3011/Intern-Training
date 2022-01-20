@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div>
+		<h2>Seat Booking</h2>
+		<tr>
+			<div align="left">
+				<h3>
+					<a th:href="@{'/SeatBooking/addseatbooking'}">Add new</a>
+				</h3>
+			</div>
+		</tr>
+
+		<div class="col-sm-8" align="center">
+			<div class="panel-body" align="center">
+
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th>ID</th>
+							<th>Day</th>
+							<th>Start time</th>
+							<th>End time</th>
+							<th>Seat id</th>
+							<th>Price</th>
+							<th>edit</th>
+							<th>delete</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="seatbooking : ${listseatbooking}">
+							<td th:text="${seatbooking.id}">Student ID</td>
+							<td th:text="${seatbooking.day}">Student Name</td>
+							<td th:text="${seatbooking.starttime}">Course</td>
+							<td th:text="${seatbooking.endtime}">Course</td>
+							<td th:text="${seatbooking.seatid}">Course</td>
+							<td th:text="${seatbooking.price}">Course</td>
+
+							<td><a th:href="@{'/SeatBooking/edit/' + ${seatbooking.id}}">Edit</a>
+							</td>
+							<td><a th:href="@{'/SeatBooking/delete/' + ${seatbooking.id}}">Delete</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+
+		</tr>
+
+		</tbody>
+		</table>
+		<div>
+</body>
+</html>

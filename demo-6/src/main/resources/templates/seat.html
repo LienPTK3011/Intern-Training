@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div>
+		<h2>Seat</h2>
+		<tr>
+			<div align="left">
+				<h3>
+					<a th:href="@{'/seat/addseat'}">Add new</a>
+			</div>
+		</tr>
+
+		<div class="col-sm-8" align="center">
+			<div class="panel-body" align="center">
+
+
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th>ID</th>
+							<th>Seat code</th>
+							<th>Price per hour</th>
+							<th>Note</th>
+							<th>edit</th>
+							<th>delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="seat : ${listseat}">
+							<td th:text="${seat.id}">ID</td>
+							<td th:text="${seat.seatcode}">Seat Code</td>
+							<td th:text="${seat.priceperhour}">Price per hour</td>
+							<td th:text="${seat.note}">Note</td>
+
+							<td><a th:href="@{'/seat/edit/' + ${seat.id}}">Edit</a></td>
+							<td><a th:href="@{'/seat/delete/' + ${seat.id}}">Delete</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		</tr>
+
+		</tbody>
+		</table>
+		<div>
+			<a href="http://localhost:9040">Back</a>
+</body>
+</html>
